@@ -3,7 +3,7 @@
 Highlight vim plugin to set a background color to span of texts.
 
 Sometime you need to highlight words, sentences or any character spans in your text file, 
-witha nice background color thepoint out keywords, labels, etc. 
+with a nice background color thepoint out keywords, labels, etc. 
 
 I personally have this need 
 - when analysing any text, with the aim to select verbs, nouns, speacial keywords, 
@@ -11,6 +11,11 @@ I personally have this need
 - when annotating intents and entities in "conversational AI" / chatbot tools,
   like beloved [RASA](www.rasa.com)
 - when programming in a standard programming language (nodeJs, Python) to put in evidence functions, variables, etc.
+
+BTW, The original (open) points rised from my vi stackexchange questions:
+
+- [Vim editor entities tagging/annotation tool](https://vi.stackexchange.com/questions/34821/vim-editor-entities-tagging-annotation-tool) 
+- [How to replace selected text T with some function(T), using a keyboard shortcut?](https://vi.stackexchange.com/questions/34823/how-to-replace-selected-text-t-with-some-functiont-using-a-keyboard-shortcut/34824#34824) 
 
 
 ## Installation
@@ -59,7 +64,9 @@ the text `some text to be colorized` is highlighted with a random chose backgrou
 ```
 
 
-## Color table
+### Color table
+
+in colors_table you can visualize all ~250 colors available (in vim terminal mode):
 
 ![](screenshots/screenshot-3.png?raw=true)
 
