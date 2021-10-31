@@ -587,7 +587,7 @@ endfunction
 function HighlightColorByName(text, colorname)
   " highlight the text argument 
   " with colorname background color
-  echo a:0
+  "echo a:0
   call matchadd(a:colorname, a:text)
 endfunction
 
@@ -599,8 +599,8 @@ endfunction
 "   alias: HighlightRandom 
 "   args: text 
 "
-command! -nargs=1 Highlight call HighlightColorRandom(<args>)
-command! -nargs=1 HighlightRandom call HighlightColorRandom(<args>)
+command! -nargs=1 Highlight call HighlightColorRandom(<q-args>)
+command! -nargs=1 HighlightRandom call HighlightColorRandom(<q-args>)
 
 "
 " HighlightColor 
