@@ -289,7 +289,6 @@ hi  color255 ctermbg=255  ctermfg=0
 " list of color names
 "
 let s:colors = [
-  \'color16',
   \'color17',
   \'color18',
   \'color19',
@@ -579,14 +578,32 @@ function RandomColor()
   return s:colors[rand() % len(s:colors)]
 endfunction
 
-function Highlight(text)
-  " highlight the text argument with a random color
+function HighlightColorRandom(text)
+  " highlight the text argument 
+  " with a random color
   call matchadd(RandomColor(), a:text)
 endfunction
 
+function HighlightColorByName(text, colorname)
+  " highlight the text argument 
+  " with colorname background color
+  echo a:0
+  call matchadd(a:colorname, a:text)
+endfunction
+
 "
-" Highlight 
-" command in command mode
-" take a single argument string
+" USER DEFINED COMMANDS
 "
-command! -nargs=1 Highlight call Highlight('<args>')
+
+" Highlight
+"   alias: HighlightRandom 
+"   args: text 
+"
+command! -nargs=1 Highlight call HighlightColorRandom(<args>)
+command! -nargs=1 HighlightRandom call HighlightColorRandom(<args>)
+
+"
+" HighlightColor 
+"   args: text, colorname 
+"
+command! -nargs=+ HighlightColor call HighlightColorByName(<f-args>)

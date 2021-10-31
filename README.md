@@ -3,16 +3,16 @@
 Highlight vim plugin to set a background color to span of texts.
 
 Sometime you need to highlight words, sentences or any character spans in your text file, 
-with a nice background color thepoint out keywords, labels, etc. 
+with a nice background color to point out keywords, labels, etc. 
 
 I personally have this need 
-- when analysing any text, with the aim to select verbs, nouns, speacial keywords, 
+- when analyzing any text, with the aim to select verbs, nouns, special keywords, 
   having a nice visual overview of different kind of info 
 - when annotating intents and entities in "conversational AI" / chatbot tools,
   like beloved [RASA](www.rasa.com)
-- when programming in a standard programming language (nodeJs, Python) to put in evidence functions, variables, etc.
+- when programming in a standard programming language (NodeJs, Python) to put in evidence functions, variables, etc.
 
-BTW, The original (open) points rised from my vi stackexchange questions:
+BTW, The original (open) points raised from my vi stackexchange questions:
 
 - [Vim editor entities tagging/annotation tool](https://vi.stackexchange.com/questions/34821/vim-editor-entities-tagging-annotation-tool) 
 - [How to replace selected text T with some function(T), using a keyboard shortcut?](https://vi.stackexchange.com/questions/34823/how-to-replace-selected-text-t-with-some-functiont-using-a-keyboard-shortcut/34824#34824) 
@@ -30,17 +30,35 @@ Plug 'solyarisoftware/Highlight.vim'
 
 In command mode
 
+### HighlightRandom (set a random background color)
 ```
 :Highlight some text to be colorized  
 ```
-
+or
+```
+:HighlightRandom some text to be colorized  
+```
 the text `some text to be colorized` is highlighted with a random chose background color.
+
 
 > 💡Tip
 >
-> If yoo don't like the random background color, 
+> If you don't like the random background color, 
 > in command line just redo the Highlight command!
 
+### HighlightColor (set a specific background color)
+```
+:HighlightColor some\ text\ to\ be\ colorized color69  
+```
+the text `some text to be colorized` is highlighted with the specified color name 
+(in the above example `color69`).
+
+> Notes:
+> - if the text contains spaces, you need to escape them (` ` must be written `\ `), 
+> - colors names are in the list: 
+>   - `color17` 
+>   - ... 
+>   - `color255`
 
 ## Screenshots examples
 
@@ -66,7 +84,7 @@ the text `some text to be colorized` is highlighted with a random chose backgrou
 
 ### Color table
 
-in colors_table you can visualize all ~250 colors available (in vim terminal mode):
+In colors\_table you can visualize all ~250 colors available (in vim terminal mode):
 
 ![](screenshots/screenshot-3.png?raw=true)
 
@@ -74,7 +92,7 @@ in colors_table you can visualize all ~250 colors available (in vim terminal mod
 ## Todo
 
 - reset previous highlighted span
-- highlight specifiing a specific color instead of a random selected
+- highlight specifying a specific color instead of a random selected
 
 
 ## How to contribute
@@ -82,12 +100,11 @@ in colors_table you can visualize all ~250 colors available (in vim terminal mod
 If you like the project, please ⭐️star this repository to show your support! 🙏
 
 Any contribute is welcome.
-
-Disussions/Issues: please submit issues for bugs, etc
+Discussions/Issues: please submit issues for bugs, etc.
 You can also contact me privately, via email.
 
 
-## Licence
+## Licenze
 
 MIT (c) Giorgio Robino
 
