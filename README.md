@@ -1,41 +1,58 @@
 # Highlight.vim
 
-Highlight vim plugin to set a background color to span of texts
+Highlight vim plugin to set a background color to span of texts.
+
 
 ## Usage
-
 In command mode
 
 ```
-:Highlight some text  
+:Highlight some text to be colorized  
 ```
 
-the text "some text" is highlighted with a random chose background color.
+the text `some text to be colorized` is highlighted with a random chose background color.
+
+
+## Screenshots
+
+### 1. Highlight entity names in a RASA NLU configuration file 
+
+![](screenshots/screenshot-1.png?raw=true)
+
+```
+:Highlight body_temperature
+:Highlight oxygen_saturation
+```
+
+### 2. Highlight entity names in a RASA NLU configuration file 
+
+![](screenshots/screenshot-2.png?raw=true)
+
+```
+:Highlight city
+:Highlight iata
+:Highlight travel_flight_class
+```
+
+>
+> 💡Tip
+>
+> If yoo don't like the random background color, 
+> in command line just redo the Highlight command!
+>
+
+
+## How to contribute
+
+If you like the project, please ⭐️star this repository to show your support! 🙏
+
+Any contribute is welcome.
+
+Disussions/Issues: please submit issues for bugs, etc
+You can also contact me privately, via email.
+
 
 ## Licence
 
-```
-Copyright (c) 2021 Giorgio Robino 
-
-MIT License
-
-Permission is hereby granted, free of charge, to any person obtaining
-a copy of this software and associated documentation files (the
-"Software"), to deal in the Software without restriction, including
-without limitation the rights to use, copy, modify, merge, publish,
-distribute, sublicense, and/or sell copies of the Software, and to
-permit persons to whom the Software is furnished to do so, subject to
-the following conditions:
-
-The above copyright notice and this permission notice shall be
-included in all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
-EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
-MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
-NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
-LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
-OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
-WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-```
+MIT (c) Giorgio Robino
 
