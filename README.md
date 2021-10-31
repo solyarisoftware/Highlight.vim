@@ -30,7 +30,7 @@ Plug 'solyarisoftware/Highlight.vim'
 
 In command mode
 
-### HighlightRandom (set a random background color)
+### `Highlight` / `HighlightRandom` (set a random background color)
 ```
 :Highlight some text to be colorized  
 ```
@@ -46,7 +46,7 @@ the text `some text to be colorized` is highlighted with a random chose backgrou
 > If you don't like the random background color, 
 > in command line just redo the Highlight command!
 
-### HighlightColor (set a specific background color)
+### `HighlightColor` (set a specific background color)
 ```
 :HighlightColor some\ text\ to\ be\ colorized color69  
 ```
@@ -57,7 +57,12 @@ the text `some text to be colorized` is highlighted with the specified color nam
 > - if the text contains spaces, you need to escape them (` ` must be written `\ `), 
 > - colors names are in the list: 
 >   - `color17` 
+>   - `color18` 
+>   - `color19` 
+>   - `color20` 
 >   - ... 
+>   - ... 
+>   - `color254`
 >   - `color255`
 
 ## Screenshots examples
@@ -84,7 +89,7 @@ the text `some text to be colorized` is highlighted with the specified color nam
 
 ### Color table
 
-In colors\_table you can visualize all ~250 colors available (in vim terminal mode):
+In directory `colors_table` you can visualize all ~250 color names available (in vim terminal mode):
 
 ![](screenshots/screenshot-3.png?raw=true)
 
@@ -100,8 +105,8 @@ In colors\_table you can visualize all ~250 colors available (in vim terminal mo
 If you like the project, please ⭐️star this repository to show your support! 🙏
 
 Any contribute is welcome.
-Discussions/Issues: please submit issues for bugs, etc.
-You can also contact me privately, via email.
+Discussions/Issues: please submit here issues for bugs, suggestions, etc.
+You can also contact me privately, via email (giorgio.robino@gmail.com).
 
 
 ## Licenze
