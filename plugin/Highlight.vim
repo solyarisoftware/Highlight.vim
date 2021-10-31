@@ -5,8 +5,9 @@
 " Last Change:  2021 Oct cw3015
 " Maintainer:   Giorgio Robino <giorgio.robino@gmail.com>
 "
-" orginal tip:
+" gists:
 " https://vi.stackexchange.com/questions/13036/highlighting-specific-words-automatically-with-different-background
+" https://vi.stackexchange.com/questions/3832/why-doesnt-vimscript-provide-a-random-number-generator
 "
 " Usage: 
 "   in command mode
@@ -14,6 +15,9 @@
 "     :Highlight some text  
 "   
 "   the text "some text" is highlighted with a random chose background color 
+"
+" Vim version:
+"   > 8.1.2342 (because Rand() function)
 "
 " Licence:
 " Copyright (c) 2021 Giorgio Robino 
