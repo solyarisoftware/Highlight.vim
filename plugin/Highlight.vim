@@ -551,7 +551,7 @@ let s:colors = [
   \'color255',
 \]
 
-function highlightColornames()
+function HighlightColornames()
   call matchadd('color16', 'color16')
   call matchadd('color17', 'color17')
   call matchadd('color18', 'color18')
@@ -814,9 +814,9 @@ function HighlightColorByName(text, colorname)
   call matchadd(a:colorname, a:text)
 endfunction
 
-function showColors()
+function ShowColors()
     execute "edit +1 " . resolve(expand('<sfile>:p')) . "colors_table.txt"
-    call highlightColornames()
+    call HighlightColornames()
 endfunction
     
 "
@@ -840,5 +840,5 @@ command! -nargs=+ HighlightColor call HighlightColorByName(<f-args>)
 "
 " HighlightAllColors
 "
-command! HighlightShowColors call showColors()
+command! HighlightShowColors call ShowColors()
 
