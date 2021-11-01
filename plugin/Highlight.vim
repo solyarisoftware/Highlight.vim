@@ -814,11 +814,15 @@ function HighlightColorByName(text, colorname)
   call matchadd(a:colorname, a:text)
 endfunction
 
+" Absolute path of script file with symbolic links resolved:
+" let s:path = resolve(expand('<sfile>:p'))
+"     execute "edit +1 " . s:path . "colors_table.txt"
+"     call HighlightColornames()
+
 function ShowColors()
-    execute "edit +1 " . resolve(expand('<sfile>:p')) . "colors_table.txt"
-    call HighlightColornames()
+  filter /color/ highlight 
 endfunction
-    
+ 
 "
 " USER DEFINED COMMANDS
 "
