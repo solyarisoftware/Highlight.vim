@@ -554,40 +554,15 @@ let s:colors = [
   \'color255',
 \]
 
-function RandomColor()
+function s:randomColor()
   " return a random color name
   return s:colors[rand() % len(s:colors)]
 endfunction
 
-function HighlightColorRandom(text)
-  " highlight the text argument 
-  " with a random color
-  call matchadd(RandomColor(), a:text)
-endfunction
-
-function HighlightColorByName(text, colorname)
-  " highlight the text argument 
-  " with colorname background color
-  "echo a:0
-  call matchadd(a:colorname, a:text)
-endfunction
-
-function HighlightClear(text)
-  call matchadd('Normal', a:text)
-endfunction
-
-" Absolute path of script file with symbolic links resolved:
-" let s:path = resolve(expand('<sfile>:p'))
-"     execute "edit +1 " . s:path . "colors_table.txt"
-"     call HighlightColornames()
-
-function ShowColors()
-  filter /color/ highlight 
-endfunction
- 
-
-" https://stackoverflow.com/questions/1533565/how-to-get-visually-selected-text-in-vimscript
-function Get_visual_selection()
+function s:getVisualSelection()
+    " return MULTILINE visual selection 
+    " https://stackoverflow.com/questions/1533565/how-to-get-visually-selected-text-in-vimscript
+    "
     " Why is this not a built-in Vim script function?!
     let [line_start, column_start] = getpos("'<")[1:2]
     let [line_end, column_end] = getpos("'>")[1:2]
@@ -600,30 +575,79 @@ function Get_visual_selection()
     return join(lines, "\n")
 endfunction
 
+
+function s:highlightRandomColor(text)
+  " highlight the text argument with a random color
+  call matchadd(s:randomColor(), a:text)
+endfunction
+
+function s:highlightWithColor(text, colorname)
+  " highlight the text argument with colorname background color
+  call matchadd(a:colorname, a:text)
+endfunction
+
+function s:highlightClear(text)
+  " TODO
+  call matchadd('Normal', a:text)
+endfunction
+
+function s:highlightVisualRandomColor()
+  " highlight the visual selection with a random color
+  
+  let l:visualSelection = s:getVisualSelection()
+
+  if l:visualSelection
+    call matchadd(s:randomColor(), l:visualSelection)
+  else
+    echo 'there is not a visual selection'
+  endif  
+
+endfunction
+
+function s:highlightVisualWithColor(colorname)
+  " highlight the visual selection with the specified colorname
+  call matchadd(a:colorname, s:getVisualSelection())
+endfunction
+
+
+" Absolute path of script file with symbolic links resolved:
+" let s:path = resolve(expand('<sfile>:p'))
+"     execute "edit +1 " . s:path . "colors_table.txt"
+"     call HighlightColornames()
+
+function s:showColors()
+  " shows lits of all color groups
+  filter /color/ highlight 
+endfunction
+
 "
 " USER DEFINED COMMANDS
 "
 
-" Highlight
-"   alias: HighlightRandom 
+" HighlightRandom
 "   args: text 
 "
-"command! -nargs=1 Highlight call HighlightColorRandom(<q-args>)
-command! -nargs=* Highlight call HighlightColorRandom(<q-args>)
-command! -nargs=1 HighlightRandom call HighlightColorRandom(<q-args>)
+command! -nargs=1 HighlightText call s:highlightRandomColor(<q-args>)
+"command! -nargs=1 HighlightTextRandom call s:highlightRandomColor(<q-args>)
 
 "
-" HighlightColor 
+" HighlightColor
 "   args: text, colorname 
 "
-command! -nargs=+ HighlightColor call HighlightColorByName(<f-args>)
+command! -nargs=+ HighlightTextWithColor call s:highlightWithColor(<f-args>)
 
 "
 " HighlightAllColors
 "
-command! HighlightShowColors call ShowColors()
+command! HighlightShowColors call s:showColors()
+
+"
+" HighlightVisual
+"
+command! HighlightVisual call s:highlightVisualRandomColor()
+command! -nargs=1 HighlightVisualWithColor call s:highlightVisualWithColor(<q-args>)
 
 "
 " HighlightClear
 "
-command! -nargs=1 HighlightClear call HighlightClear(<q-args>)
+command! -nargs=1 HighlightClear call s:highlightClear(<q-args>)
