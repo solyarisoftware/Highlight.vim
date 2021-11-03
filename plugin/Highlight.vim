@@ -582,20 +582,35 @@ function s:highlightRandomColor(text)
 endfunction
 
 
-function s:highlightWithColor(text, colorname)
-  " highlight the text argument with colorname background color
-
-    " if color is a number (e.g. 123)
-    " then the color name is 'color123'
-    if type(a:colorname) == v:t_number
-      a:colorname = 'color' . string(a:colorname)
+function s:validateColor(color)
+    " if color argument is a number (e.g. 123)
+    " then the color is 'color123'
+    if a:color =~ '\v<\d+>'
+      return 'color' . a:color
+    else
+      return a:color
     endif
 
-  " If item is in the list
-  if index(s:colors, a:colorname) >= 0
-    call matchadd(a:colorname, a:text)
+endfunction
+  
+
+function s:highlightWithColor(text, color)
+  " highlight the text argument 
+  " with a specified background color
+  " 
+  " args:
+  " text(string) : the text to be highlighted
+  " color(string): can be the string 'color<number>', example: 'color34'
+  " color(number): can be the number <number>, example: 34
+  "        
+
+  let l:color = s:validateColor(a:color)
+
+  " If item is in the colors list
+  if index(s:colors, l:color) >= 0
+    call matchadd(l:color, a:text)
   else
-    echo 'unknown color: ' . a:colorname
+    echo 'unknown color: ' . a:color
   endif
 
 endfunction
@@ -622,14 +637,23 @@ function s:highlightVisualRandomColor()
 endfunction
 
 
-function s:highlightVisualWithColor(colorname)
-  " highlight the visual selection with the specified colorname
+function s:highlightVisualWithColor(color)
+  " highlight the visual selection
+  " with a specified background color
+  " 
+  " args:
+  " text(string) : the text to be highlighted
+  " color(string): can be the string 'color<number>', example: 'color34'
+  " color(number): can be the number <number>, example: 34
+  "
+  "
+  let l:color = s:validateColor(a:color)
 
   " If item is in the list
-  if index(s:colors, a:colorname) >= 0
-    call matchadd(a:colorname, s:getVisualSelection())
+  if index(s:colors, l:color) >= 0
+    call matchadd(l:color, s:getVisualSelection())
   else
-    echo 'unknown color: ' . a:colorname
+    echo 'unknown color: ' . a:color
   endif
 
 endfunction
@@ -649,27 +673,24 @@ endfunction
 " USER DEFINED COMMANDS
 "
 
-" HighlightRandom
-"   args: text 
+"
+" HighlightText
+" HighlightTextWithColor
 "
 command! -nargs=1 HighlightText call s:highlightRandomColor(<q-args>)
-
-"
-" HighlightColor
-"   args: text, colorname 
-"
 command! -nargs=+ HighlightTextWithColor call s:highlightWithColor(<f-args>)
 
 "
-" HighlightAllColors
-"
-command! HighlightShowColors call s:showColors()
-
-"
 " HighlightVisual
+" HighlightVisualWithColor
 "
 command! HighlightVisual call s:highlightVisualRandomColor()
 command! -nargs=1 HighlightVisualWithColor call s:highlightVisualWithColor(<q-args>)
+
+"
+" HighlightShowColors
+"
+command! HighlightShowColors call s:showColors()
 
 "
 " HighlightClear

@@ -46,10 +46,12 @@ Highlight a word or sentence, with a specified background color
 the text `some text to be colorized` is highlighted with the specified color name 
 (in the above example `color69`).
 
-> Notes:
-> - if the text contains spaces, you need to escape them (` ` must be written `\ `), 
-> - colors names are in the list: 
->   `color17`, `color18`, `color19`, `color20`, ..., `color254`, `color255`
+Colors names are in the list: 
+`color17`, `color18`, `color19`, `color20`, ..., `color254`, `color255`
+
+> 💡Tip: if the text contains spaces, you need to escape them (` ` must be written `\ `), 
+
+> ⚠️ Warning:  you can just pass ethe color as a number, `HighlightTextWithColor some_text 69`
 
 ### `HighlightVisual` 
 Highlight a visual selection, picking a random background color:
@@ -60,8 +62,9 @@ Highlight a visual selection, picking a random background color:
 ### `HighlightVisualWithColor` 
 Highlight a visual selection, picking a random background color:
 ```
-:HighlightVisual colorname 
+:HighlightVisualWithColor color123 
 ```
+> 💡Tip:  you can just pass the color as a number, `HighlightVisualWithColor 123`
 
 ### `HighlightShowColors` 
 Show the list of available color names, highlighting each colorname:
