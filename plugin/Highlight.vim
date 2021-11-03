@@ -581,32 +581,57 @@ function s:highlightRandomColor(text)
   call matchadd(s:randomColor(), a:text)
 endfunction
 
+
 function s:highlightWithColor(text, colorname)
   " highlight the text argument with colorname background color
-  call matchadd(a:colorname, a:text)
+
+    " if color is a number (e.g. 123)
+    " then the color name is 'color123'
+    if type(a:colorname) == v:t_number
+      a:colorname = 'color' . string(a:colorname)
+    endif
+
+  " If item is in the list
+  if index(s:colors, a:colorname) >= 0
+    call matchadd(a:colorname, a:text)
+  else
+    echo 'unknown color: ' . a:colorname
+  endif
+
 endfunction
+
 
 function s:highlightClear(text)
   " TODO
   call matchadd('Normal', a:text)
 endfunction
 
+
 function s:highlightVisualRandomColor()
   " highlight the visual selection with a random color
   
   let l:visualSelection = s:getVisualSelection()
 
-  if len(l:visualSelection) > 0
-    call matchadd(s:randomColor(), l:visualSelection)
-  else
+  "if len(l:visualSelection) > 0
+  if empty(l:visualSelection)
     echo 'there is no visual selection'
+  else
+    call matchadd(s:randomColor(), l:visualSelection)
   endif
 
 endfunction
 
+
 function s:highlightVisualWithColor(colorname)
   " highlight the visual selection with the specified colorname
-  call matchadd(a:colorname, s:getVisualSelection())
+
+  " If item is in the list
+  if index(s:colors, a:colorname) >= 0
+    call matchadd(a:colorname, s:getVisualSelection())
+  else
+    echo 'unknown color: ' . a:colorname
+  endif
+
 endfunction
 
 
@@ -628,7 +653,6 @@ endfunction
 "   args: text 
 "
 command! -nargs=1 HighlightText call s:highlightRandomColor(<q-args>)
-"command! -nargs=1 HighlightTextRandom call s:highlightRandomColor(<q-args>)
 
 "
 " HighlightColor
