@@ -596,11 +596,11 @@ function s:highlightVisualRandomColor()
   
   let l:visualSelection = s:getVisualSelection()
 
-  if l:visualSelection
+  if len(l:visualSelection) > 0
     call matchadd(s:randomColor(), l:visualSelection)
   else
-    echo 'there is not a visual selection'
-  endif  
+    echo 'there is no visual selection'
+  endif
 
 endfunction
 

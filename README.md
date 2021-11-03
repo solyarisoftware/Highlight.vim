@@ -27,14 +27,10 @@ Plug 'solyarisoftware/Highlight.vim'
 
 In vim command mode you have these commands:
 
-### `Highlight` / `HighlightRandom` 
+### `HighlightText` 
 Highlight a word or sentence, picking a random background color:
 ```
-:Highlight some text to be colorized  
-```
-or
-```
-:HighlightRandom some text to be colorized  
+:HighlightText some text to be colorized  
 ```
 
 The text `some text to be colorized` is highlighted with a random chose background color.
@@ -42,10 +38,10 @@ The text `some text to be colorized` is highlighted with a random chose backgrou
 > 💡Tip: If you don't like the random background color, 
 > in command line just redo the Highlight command!
 
-### `HighlightColor` 
+### `HighlightTextWithColor` 
 Highlight a word or sentence, with a specified background color
 ```
-:HighlightColor some\ text\ to\ be\ colorized color69  
+:HighlightTextWithColor some\ text\ to\ be\ colorized color69  
 ```
 the text `some text to be colorized` is highlighted with the specified color name 
 (in the above example `color69`).
@@ -55,11 +51,24 @@ the text `some text to be colorized` is highlighted with the specified color nam
 > - colors names are in the list: 
 >   `color17`, `color18`, `color19`, `color20`, ..., `color254`, `color255`
 
+### `HighlightVisual` 
+Highlight a visual selection, picking a random background color:
+```
+:HighlightVisual 
+```
+
+### `HighlightVisualWithColor` 
+Highlight a visual selection, picking a random background color:
+```
+:HighlightVisual colorname 
+```
+
 ### `HighlightShowColors` 
 Show the list of available color names, highlighting each colorname:
 ```
 :HighlightShowColors  
 ```
+
 
 ## Screenshots examples
 
@@ -68,8 +77,8 @@ Show the list of available color names, highlighting each colorname:
 ![](screenshots/screenshot-1.png?raw=true)
 
 ```
-:Highlight body_temperature
-:Highlight oxygen_saturation
+:HighlightText body_temperature
+:HighlightText oxygen_saturation
 ```
 
 ### Example 2: highlight entity names in a RASA NLU configuration file 
@@ -77,18 +86,25 @@ Show the list of available color names, highlighting each colorname:
 ![](screenshots/screenshot-2.png?raw=true)
 
 ```
-:Highlight city
-:Highlight iata
-:Highlight travel_flight_class
+:HighlightText city
+:HighlightText iata
+:HighlightText travel_flight_class
 ```
 
 
 ## Todo
 
-- build a `HighlightUndo' command to undo/clear previous highlighted span
+- build a `HighlightUndo` command to undo/clear previous highlighted span
 
 
-## Related topic
+## Similar projects
+
+- https://github.com/lfv89/vim-interestingwords
+- https://github.com/joanrivera/vim-highlight
+
+
+## Related topics
+
 This project is related to the original (open) points raised from my vi stackexchange questions:
 
 - [Vim editor entities tagging/annotation tool](https://vi.stackexchange.com/questions/34821/vim-editor-entities-tagging-annotation-tool) 
@@ -102,7 +118,6 @@ If you like the project, please ⭐️star this repository to show your support!
 I'm not a vimscript expert, so any contribute is welcome.
 For any proposal and issue, please submit here on github issues for bugs, suggestions, etc.
 You can also contact me privately, via email (giorgio.robino@gmail.com).
-
 
 ## Licenze
 
