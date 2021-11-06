@@ -39,16 +39,22 @@ In vim command mode you have these commands:
 
 - Highlight a word or sentence (the `text`), with a specified background `color`
   ```
-  :HighlightTextWithColor text color  
+  :HighlightText text color  
   ```
   the `text` is highlighted with the specified color name in the list: 
-  `color17`, `color18`, `color19`, `color20`, ..., `color254`, `color255`
+  `color17`, `color18`, ..., `color254`, `color255`
 
   > 💡Tip: if the text contains spaces, you need to escape them (` ` must be written `\ `), 
-  > by example using command 
-  > `:HighlightTextWithColor some\ text\ to\ be\ colorized color69`
+  > by example `some\ text\ to\ be\ colorized`
   >
-  > 💡Tip:  you can just pass the color as a number, `HighlightTextWithColor some_text 69`
+  > 💡Tip:  you can just pass the color as a number, `HighlightText some_text 69`
+
+  Examples:
+  - `HighlightText a text span made by many words`
+  - `HighlightText some_text_without_blanks color70`
+  - `HighlightText some_text_without_blanks 70`
+  - `HighlightText text\ containing\ blanks color69`
+  - `HighlightText text\ containing\ blanks 69`
 
 ### `HighlightVisual` 
 Highlight a visual selection, 
@@ -62,6 +68,11 @@ Highlight a visual selection,
   :HighlightVisual color
   ```
   > 💡Tip:  you can just pass the `color` as a number, `HighlightVisualWithColor 123`
+
+  Examples:
+  - `HighlightVisual`
+  - `HighlightVisual 71`
+  - `HighlightVisual color71`
 
 ### `HighlightWord` 
 Highlight the word under the cursor, 
