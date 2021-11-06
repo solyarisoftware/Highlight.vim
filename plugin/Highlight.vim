@@ -554,10 +554,24 @@ let s:colors = [
   \'color255',
 \]
 
+
 function s:randomColor()
   " return a random color name
   return s:colors[rand() % len(s:colors)]
 endfunction
+
+
+function s:validateColor(color)
+    " if color argument is a number (e.g. 123)
+    " then the color is 'color123'
+    if a:color =~ '\v<\d+>'
+      return 'color' . a:color
+    else
+      return a:color
+    endif
+
+endfunction
+
 
 function s:getVisualSelection()
     " return MULTILINE visual selection 
@@ -576,68 +590,56 @@ function s:getVisualSelection()
 endfunction
 
 
-function s:highlightRandomColor(text)
-  " highlight the text argument with a random color
-  call matchadd(s:randomColor(), a:text)
-endfunction
+function s:highlightText(...)
+  " highlight the specified text argument 
+  " with a random color or a specified color (second argument)
 
+  " at least 1 argument is required
+  if a:0 == 0
+    echo '<text> argument not supplied'
+    return
+  endif
 
-function s:validateColor(color)
-    " if color argument is a number (e.g. 123)
-    " then the color is 'color123'
-    if a:color =~ '\v<\d+>'
-      return 'color' . a:color
+  let l:text = '' 
+  let l:color = '' 
+
+  " text argument supplied
+  if a:0 >= 1
+    let l:text = a:1
+  endif 
+
+  " color argument assigned?
+  if a:0 >= 2
+    let l:color = a:2
+  endif 
+  
+  if a:0 > 2
+    echo 'too many arguments.'
+    return
+  endif 
+  
+  if empty(l:color) 
+    " color argument is not specified, random color picked
+    let l:randomColor = s:randomColor()
+    call matchadd(l:randomColor, l:text)
+    echo 'used random color: ' . l:randomColor
+  else
+    " color argument specified
+    let l:color = s:validateColor(l:color)
+
+    " If item is in the colors list
+    if index(s:colors, l:color) >= 0
+      call matchadd(l:color, l:text)
+      echo 'used color: ' . l:color
     else
-      return a:color
+      echo 'unknown color: ' . l:color
     endif
-
-endfunction
-  
-
-function s:highlightWithColor(text, color)
-  " highlight the text argument 
-  " with a specified background color
-  " 
-  " args:
-  " text(string) : the text to be highlighted
-  " color(string): can be the string 'color<number>', example: 'color34'
-  " color(number): can be the number <number>, example: 34
-  "        
-
-  let l:color = s:validateColor(a:color)
-
-  " If item is in the colors list
-  if index(s:colors, l:color) >= 0
-    call matchadd(l:color, a:text)
-  else
-    echo 'unknown color: ' . a:color
   endif
-
-endfunction
-
-
-function s:highlightClear(text)
-  " TODO
-  call matchadd('Normal', a:text)
-endfunction
-
-
-function s:highlightVisualRandomColor()
-  " highlight the visual selection with a random color
   
-  let l:visualSelection = s:getVisualSelection()
-
-  "if len(l:visualSelection) > 0
-  if empty(l:visualSelection)
-    echo 'there is no visual selection'
-  else
-    call matchadd(s:randomColor(), l:visualSelection)
-  endif
-
 endfunction
 
 
-function s:highlightVisualWithColor(color)
+function s:highlightVisual(...)
   " highlight the visual selection
   " with a specified background color
   " 
@@ -646,14 +648,83 @@ function s:highlightVisualWithColor(color)
   " color(string): can be the string 'color<number>', example: 'color34'
   " color(number): can be the number <number>, example: 34
   "
-  "
-  let l:color = s:validateColor(a:color)
 
-  " If item is in the list
-  if index(s:colors, l:color) >= 0
-    call matchadd(l:color, s:getVisualSelection())
+  " at least 1 argument is required
+  if a:0 == 0
+    echo '<color> argument not supplied. Random color selected'
+  endif
+
+  let l:color = '' 
+
+  " color argument
+  if a:0 >= 1
+    let l:color = a:1
+  endif 
+  
+  if a:0 > 1
+    echo 'too many arguments.'
+  endif 
+
+  " validate visual selection
+  let l:visualSelection = s:getVisualSelection()
+
+  if empty(l:visualSelection)
+    echo 'there is no visual selection'
+    return
+  endif
+  
+  if empty(l:color) 
+    " color not specified, select a random color
+    let l:randomColor = s:randomColor()
+    call matchadd(l:randomColor, l:visualSelection)
+    echo 'used random color: ' . l:randomColor
+    return
+  else  
+    " color specified
+    let l:color = s:validateColor(l:color)
+
+    " validate color (is the item in the colors list?)
+    if index(s:colors, l:color) >= 0
+      call matchadd(l:color, l:visualSelection())
+    else
+      echo 'unknown color: ' . l:color
+    endif
+    return
+  endif  
+endfunction
+  
+
+function s:highlightClear(text)
+  " TODO
+  call matchadd('Normal', a:text)
+endfunction
+
+
+function s:highlightWordUnderCursor()
+  " highlight the word under the cursor, with a random color
+  " https://stackoverflow.com/questions/1115447/how-can-i-get-the-word-under-the-cursor-and-the-text-of-the-current-line-in-vim
+  
+  let l:wordUnderCursor = expand("<cword>") 
+
+  if empty(l:wordUnderCursor)
+    echo 'nothing to highlight'
   else
-    echo 'unknown color: ' . a:color
+    call matchadd(s:randomColor(), l:wordUnderCursor)
+  endif
+
+endfunction
+
+
+function s:highlightCurrentLine()
+  " highlight the text of the current line, with a random color
+  " https://stackoverflow.com/questions/1115447/how-can-i-get-the-word-under-the-cursor-and-the-text-of-the-current-line-in-vim
+  
+  let l:currentLine = getline(".") 
+
+  if empty(l:currentLine)
+    echo 'nothing to highlight'
+  else
+    call matchadd(s:randomColor(), l:currentLine)
   endif
 
 endfunction
@@ -674,23 +745,26 @@ endfunction
 "
 
 "
-" HighlightText
-" HighlightTextWithColor
-"
-command! -nargs=1 HighlightText call s:highlightRandomColor(<q-args>)
-command! -nargs=+ HighlightTextWithColor call s:highlightWithColor(<f-args>)
-
-"
-" HighlightVisual
-" HighlightVisualWithColor
-"
-command! HighlightVisual call s:highlightVisualRandomColor()
-command! -nargs=1 HighlightVisualWithColor call s:highlightVisualWithColor(<q-args>)
-
-"
 " HighlightShowColors
 "
 command! HighlightShowColors call s:showColors()
+
+"
+" HighlightText
+"
+command! -nargs=+ HighlightText call s:highlightText(<f-args>)
+
+"
+" HighlightVisual
+"
+command! -nargs=+ HighlightVisual call s:highlightVisual(<q-args>)
+
+"
+" HighlightWord
+" HighlightLine
+"
+command! HighlightWord call s:highlightWordUnderCursor()
+command! HighlightLine call s:highlightCurrentLine()
 
 "
 " HighlightClear
