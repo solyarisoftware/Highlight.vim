@@ -555,6 +555,37 @@ let s:colors = [
 \]
 
 
+" list of all matchadd items
+let s:matchaddIds = []
+
+
+function s:highlightUndo()
+  " delete last macthadd, first element in the matchaddIds stack
+  "
+  "call matchadd('Normal', a:text)
+
+  if len(s:matchaddIds) == 0
+    echo 'nothing to undo'
+    return
+  endif  
+
+  let l:lastId = s:matchaddIds[0]
+  
+  call matchdelete(l:lastId)
+  " remove last insertion in the matchaddIds stack 
+  
+  call remove(s:matchaddIds, 0)
+endfunction
+
+
+function s:matchadd(color, text)
+  "call matchadd, inserting the returned id in the matchaddIds stack
+  let l:id = matchadd(a:color, a:text)
+  " insert new value at start of list
+  call insert(s:matchaddIds, l:id)
+endfunction
+
+
 function s:randomColor()
   " return a random color name
   return s:colors[rand() % len(s:colors)]
@@ -621,7 +652,7 @@ function s:highlightText(...)
   if empty(l:color) 
     " color argument is not specified, random color picked
     let l:randomColor = s:randomColor()
-    call matchadd(l:randomColor, l:text)
+    call s:matchadd(l:randomColor, l:text)
     echo 'used random color: ' . l:randomColor
   else
     " color argument specified
@@ -629,7 +660,7 @@ function s:highlightText(...)
 
     " If item is in the colors list
     if index(s:colors, l:color) >= 0
-      call matchadd(l:color, l:text)
+      call s:matchadd(l:color, l:text)
       echo 'used color: ' . l:color
     else
       echo 'unknown color: ' . l:color
@@ -676,24 +707,18 @@ function s:highlightVisual(...)
     " color not specified, select a random color
     let l:randomColor = s:randomColor()
     echo 'used random color: ' . l:randomColor
-    call matchadd(l:randomColor, l:visualSelection)
+    call s:matchadd(l:randomColor, l:visualSelection)
   else  
     " color specified
     let l:color = s:validateColor(l:color)
 
     " validate color (is the item in the colors list?)
     if index(s:colors, l:color) >= 0
-      call matchadd(l:color, l:visualSelection)
+      call s:matchadd(l:color, l:visualSelection)
     else
       echo 'unknown color: ' . l:color
     endif
   endif  
-endfunction
-  
-
-function s:highlightClear(text)
-  " TODO
-  call matchadd('Normal', a:text)
 endfunction
 
 
@@ -706,7 +731,7 @@ function s:highlightWordUnderCursor()
   if empty(l:wordUnderCursor)
     echo 'nothing to highlight'
   else
-    call matchadd(s:randomColor(), l:wordUnderCursor)
+    call s:matchadd(s:randomColor(), l:wordUnderCursor)
   endif
 
 endfunction
@@ -721,7 +746,7 @@ function s:highlightCurrentLine()
   if empty(l:currentLine)
     echo 'nothing to highlight'
   else
-    call matchadd(s:randomColor(), l:currentLine)
+    call s:matchadd(s:randomColor(), l:currentLine)
   endif
 
 endfunction
@@ -732,7 +757,7 @@ endfunction
 "     execute "edit +1 " . s:path . "colors_table.txt"
 "     call HighlightColornames()
 
-function s:showColors()
+function s:highlightColors()
   " shows lits of all color groups
   filter /color/ highlight 
 endfunction
@@ -744,7 +769,7 @@ endfunction
 "
 " HighlightShowColors
 "
-command! HighlightShowColors call s:showColors()
+command! HighlightColors call s:highlightColors()
 
 "
 " HighlightText
@@ -764,6 +789,6 @@ command! HighlightWord call s:highlightWordUnderCursor()
 command! HighlightLine call s:highlightCurrentLine()
 
 "
-" HighlightClear
+" HighlightUndo
 "
-command! -nargs=1 HighlightClear call s:highlightClear(<q-args>)
+command! HighlightUndo call s:highlightUndo()

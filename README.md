@@ -25,10 +25,29 @@ Plug 'solyarisoftware/Highlight.vim'
 
 ## Usage
 
-In vim command mode you have these commands:
+In vim command mode you these commands are availabe:
 
-### `HighlightText` 
-- Highlight a word or sentence, picking a random background color:
+- `HighlightColors`
+- `HighlightText`
+- `HighlightVisual`
+- `HighlightWord`
+- `HighlightLine`
+- `HighlightUndo`
+
+### `HighlightColors` 
+
+Show the list of available color names, highlighting each colorname:
+```
+:HighlightColors
+```
+A color name is one of the items: 
+`color17`, `color18`, ..., `color254`, `color255`
+
+> 💡Tip: in all commands below you can just pass the color also as a number, 
+> by example: `color18` could be referred also as `18`
+
+### `HighlightText text [color]` 
+- Highlight a word or sentence,  or a regexp pattern, picking a random background color:
   ```
   :HighlightText text
   ```
@@ -37,26 +56,29 @@ In vim command mode you have these commands:
   > 💡Tip: If you don't like the random background color, 
   > in command line just redo the Highlight command!
 
-- Highlight a word or sentence (the `text`), with a specified background `color`
+  > 💡Tip: the text pattern could be also a regexp text pattern, 
+  > by example: `HighlightText \ .HighlightText\ ` 
+  > matches strings ` 1HighlightText ` or  ` 2HighlightText `, etc. 
+
+- Highlight a word or sentence (the `text`), or a regexp pattern, with a specified background `color`
   ```
   :HighlightText text color  
   ```
-  the `text` is highlighted with the specified color name in the list: 
-  `color17`, `color18`, ..., `color254`, `color255`
+  the `text` is highlighted with the specified `color` (color name or corresponding color id). 
 
   > 💡Tip: if the text contains spaces, you need to escape them (` ` must be written `\ `), 
   > by example `some\ text\ to\ be\ colorized`
-  >
-  > 💡Tip:  you can just pass the color as a number, `HighlightText some_text 69`
 
   Examples:
   - `HighlightText a text span made by many words`
+  - `HighlightText any vim regular expression, by example, with case insensitive flag \c`
   - `HighlightText some_text_without_blanks color70`
   - `HighlightText some_text_without_blanks 70`
   - `HighlightText text\ containing\ blanks color69`
   - `HighlightText text\ containing\ blanks 69`
 
-### `HighlightVisual` 
+### `HighlightVisual [color]` 
+
 Highlight a visual selection, 
 - picking a random background color:
   ```
@@ -74,24 +96,27 @@ Highlight a visual selection,
   - `HighlightVisual 71`
   - `HighlightVisual color71`
 
-### `HighlightWord` 
+### `HighlightWord [color]` 
+
 Highlight the word under the cursor, 
 - picking a random background color:
   ```
   :HighlightWord 
   ```
 
-### `HighlightLine` 
+### `HighlightLine [color]` 
+
 Highlight the current line, 
 - picking a random background color:
   ```
   :HighlightLine 
   ```
 
-### `HighlightShowColors` 
-Show the list of available color names, highlighting each colorname:
+### `HighlightUndo` 
+
+Undo the last Highlight command, 
 ```
-:HighlightShowColors  
+:HighlightUndo 
 ```
 
 
@@ -119,7 +144,7 @@ Show the list of available color names, highlighting each colorname:
 
 ## Todo
 
-- build a `HighlightUndo` command to undo/clear previous highlighted span
+- make highlights persistent, tracking on file all changes on some readable format (e.g. JSON).  
 
 
 ## Similar projects
@@ -140,9 +165,10 @@ This project is related to the original (open) points raised from my vi stackexc
 
 If you like the project, please ⭐️star this repository to show your support! 🙏
 
+This project is in a work-in-progress status.
 I'm not a vimscript expert, so any contribute is welcome.
 For any proposal and issue, please submit here on github issues for bugs, suggestions, etc.
-You can also contact me privately, via email (giorgio.robino@gmail.com).
+You can also contact me via email (giorgio.robino@gmail.com).
 
 ## Licenze
 
