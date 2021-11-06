@@ -722,7 +722,7 @@ function s:highlightVisual(...)
 endfunction
 
 
-function s:highlightWordUnderCursor()
+function s:highlightWordUnderCursor(...)
   " highlight the word under the cursor, with a random color
   " https://stackoverflow.com/questions/1115447/how-can-i-get-the-word-under-the-cursor-and-the-text-of-the-current-line-in-vim
   
@@ -730,14 +730,40 @@ function s:highlightWordUnderCursor()
 
   if empty(l:wordUnderCursor)
     echo 'nothing to highlight'
-  else
-    call s:matchadd(s:randomColor(), l:wordUnderCursor)
+    return
   endif
 
+  let l:color = '' 
+
+  " color argument
+  if a:0 >= 1
+    let l:color = a:1
+  endif 
+  
+  if a:0 > 1
+    echo 'too many arguments.'
+  endif 
+
+  if empty(l:color) 
+    " color not specified, select a random color
+    let l:randomColor = s:randomColor()
+    echo 'used random color: ' . l:randomColor
+    call s:matchadd(l:randomColor, l:wordUnderCursor)
+  else  
+    " color specified
+    let l:color = s:validateColor(l:color)
+
+    " validate color (is the item in the colors list?)
+    if index(s:colors, l:color) >= 0
+      call s:matchadd(l:color, l:wordUnderCursor)
+    else
+      echo 'unknown color: ' . l:color
+    endif
+  endif  
 endfunction
 
 
-function s:highlightCurrentLine()
+function s:highlightCurrentLine(...)
   " highlight the text of the current line, with a random color
   " https://stackoverflow.com/questions/1115447/how-can-i-get-the-word-under-the-cursor-and-the-text-of-the-current-line-in-vim
   
@@ -745,10 +771,36 @@ function s:highlightCurrentLine()
 
   if empty(l:currentLine)
     echo 'nothing to highlight'
-  else
-    call s:matchadd(s:randomColor(), l:currentLine)
+    return
   endif
 
+  let l:color = '' 
+
+  " color argument
+  if a:0 >= 1
+    let l:color = a:1
+  endif 
+  
+  if a:0 > 1
+    echo 'too many arguments.'
+  endif 
+
+  if empty(l:color) 
+    " color not specified, select a random color
+    let l:randomColor = s:randomColor()
+    echo 'used random color: ' . l:randomColor
+    call s:matchadd(l:randomColor, l:currentLine)
+  else  
+    " color specified
+    let l:color = s:validateColor(l:color)
+
+    " validate color (is the item in the colors list?)
+    if index(s:colors, l:color) >= 0
+      call s:matchadd(l:color, l:currentLine)
+    else
+      echo 'unknown color: ' . l:color
+    endif
+  endif  
 endfunction
 
 
@@ -774,7 +826,7 @@ command! HighlightColors call s:highlightColors()
 "
 " HighlightText
 "
-command! -nargs=+ HighlightText call s:highlightText(<f-args>)
+command! -nargs=* HighlightText call s:highlightText(<f-args>)
 
 "
 " HighlightVisual
@@ -785,8 +837,8 @@ command! -nargs=* HighlightVisual call s:highlightVisual(<q-args>)
 " HighlightWord
 " HighlightLine
 "
-command! HighlightWord call s:highlightWordUnderCursor()
-command! HighlightLine call s:highlightCurrentLine()
+command! -nargs=* HighlightWord call s:highlightWordUnderCursor(<q-args>)
+command! -nargs=* HighlightLine call s:highlightCurrentLine(<q-args>)
 
 "
 " HighlightUndo

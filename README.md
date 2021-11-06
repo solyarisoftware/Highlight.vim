@@ -71,7 +71,7 @@ A color name is one of the items:
 
   Examples:
   - `HighlightText a text span made by many words`
-  - `HighlightText any vim regular expression, by example, with case insensitive flag \c`
+  - `HighlightText /\vmin|max`
   - `HighlightText some_text_without_blanks color70`
   - `HighlightText some_text_without_blanks 70`
   - `HighlightText text\ containing\ blanks color69`
