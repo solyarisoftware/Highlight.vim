@@ -649,10 +649,9 @@ function s:highlightVisual(...)
   " color(number): can be the number <number>, example: 34
   "
 
-  " at least 1 argument is required
-  if a:0 == 0
-    echo '<color> argument not supplied. Random color selected'
-  endif
+  "if a:0 == 0
+  "  echo '<color> argument not supplied. Random color selected'
+  "endif
 
   let l:color = '' 
 
@@ -676,20 +675,18 @@ function s:highlightVisual(...)
   if empty(l:color) 
     " color not specified, select a random color
     let l:randomColor = s:randomColor()
-    call matchadd(l:randomColor, l:visualSelection)
     echo 'used random color: ' . l:randomColor
-    return
+    call matchadd(l:randomColor, l:visualSelection)
   else  
     " color specified
     let l:color = s:validateColor(l:color)
 
     " validate color (is the item in the colors list?)
     if index(s:colors, l:color) >= 0
-      call matchadd(l:color, l:visualSelection())
+      call matchadd(l:color, l:visualSelection)
     else
       echo 'unknown color: ' . l:color
     endif
-    return
   endif  
 endfunction
   
@@ -757,7 +754,7 @@ command! -nargs=+ HighlightText call s:highlightText(<f-args>)
 "
 " HighlightVisual
 "
-command! -nargs=+ HighlightVisual call s:highlightVisual(<q-args>)
+command! -nargs=* HighlightVisual call s:highlightVisual(<q-args>)
 
 "
 " HighlightWord
