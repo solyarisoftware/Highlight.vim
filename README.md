@@ -28,43 +28,54 @@ Plug 'solyarisoftware/Highlight.vim'
 In vim command mode you have these commands:
 
 ### `HighlightText` 
-Highlight a word or sentence, picking a random background color:
-```
-:HighlightText some text to be colorized  
-```
+- Highlight a word or sentence, picking a random background color:
+  ```
+  :HighlightText text
+  ```
+  The `text` is highlighted with a random chose background color.
 
-The text `some text to be colorized` is highlighted with a random chose background color.
+  > 💡Tip: If you don't like the random background color, 
+  > in command line just redo the Highlight command!
 
-> 💡Tip: If you don't like the random background color, 
-> in command line just redo the Highlight command!
+- Highlight a word or sentence (the `text`), with a specified background `color`
+  ```
+  :HighlightTextWithColor text color  
+  ```
+  the `text` is highlighted with the specified color name in the list: 
+  `color17`, `color18`, `color19`, `color20`, ..., `color254`, `color255`
 
-### `HighlightTextWithColor` 
-Highlight a word or sentence, with a specified background color
-```
-:HighlightTextWithColor some\ text\ to\ be\ colorized color69  
-```
-the text `some text to be colorized` is highlighted with the specified color name 
-(in the above example `color69`).
-
-Colors names are in the list: 
-`color17`, `color18`, `color19`, `color20`, ..., `color254`, `color255`
-
-> 💡Tip: if the text contains spaces, you need to escape them (` ` must be written `\ `), 
-
-> ⚠️ Warning:  you can just pass ethe color as a number, `HighlightTextWithColor some_text 69`
+  > 💡Tip: if the text contains spaces, you need to escape them (` ` must be written `\ `), 
+  > by example using command 
+  > `:HighlightTextWithColor some\ text\ to\ be\ colorized color69`
+  >
+  > 💡Tip:  you can just pass the color as a number, `HighlightTextWithColor some_text 69`
 
 ### `HighlightVisual` 
-Highlight a visual selection, picking a random background color:
-```
-:HighlightVisual 
-```
+Highlight a visual selection, 
+- picking a random background color:
+  ```
+  :HighlightVisual 
+  ```
 
-### `HighlightVisualWithColor` 
-Highlight a visual selection, picking a random background color:
-```
-:HighlightVisualWithColor color123 
-```
-> 💡Tip:  you can just pass the color as a number, `HighlightVisualWithColor 123`
+- selecting a specific background color:
+  ```
+  :HighlightVisual color
+  ```
+  > 💡Tip:  you can just pass the `color` as a number, `HighlightVisualWithColor 123`
+
+### `HighlightWord` 
+Highlight the word under the cursor, 
+- picking a random background color:
+  ```
+  :HighlightWord 
+  ```
+
+### `HighlightLine` 
+Highlight the current line, 
+- picking a random background color:
+  ```
+  :HighlightLine 
+  ```
 
 ### `HighlightShowColors` 
 Show the list of available color names, highlighting each colorname:
