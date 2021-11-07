@@ -2,7 +2,7 @@
 
 ## Example 1: highlight entity names in a RASA NLU configuration file 
 
-![](screenshot-1.png?raw=true)
+![](screenshot-1.png)
 
 ```
 :HighlightText body_temperature
@@ -11,7 +11,7 @@
 
 ## Example 2: highlight entity names in a RASA NLU configuration file 
 
-![](screenshots/screenshot-2.png?raw=true)
+![](screenshot-2.png)
 
 ```
 :HighlightText city
