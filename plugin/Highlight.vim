@@ -621,6 +621,29 @@ function s:getVisualSelection()
 endfunction
 
 
+function s:highlight(color, text)
+  "i highlight the text of, with a specified color or a random color
+  
+  if empty(a:color) 
+    " color not specified, select a random color
+    let l:randomColor = s:randomColor()
+    call s:matchadd(l:randomColor, a:text)
+    echo 'used random color: ' . l:randomColor
+  else  
+    " color argument specified
+    let l:color = s:validateColor(a:color)
+
+    " validate color (is the item in the colors list?)
+    if index(s:colors, l:color) >= 0
+      call s:matchadd(l:color, a:text)
+      echo 'used color: ' . l:color
+    else
+      echo 'unknown color: ' . l:color
+    endif
+  endif  
+endfunction
+
+
 function s:highlightText(...)
   " highlight the specified text argument 
   " with a random color or a specified color (second argument)
@@ -649,24 +672,7 @@ function s:highlightText(...)
     return
   endif 
   
-  if empty(l:color) 
-    " color argument is not specified, random color picked
-    let l:randomColor = s:randomColor()
-    call s:matchadd(l:randomColor, l:text)
-    echo 'used random color: ' . l:randomColor
-  else
-    " color argument specified
-    let l:color = s:validateColor(l:color)
-
-    " If item is in the colors list
-    if index(s:colors, l:color) >= 0
-      call s:matchadd(l:color, l:text)
-      echo 'used color: ' . l:color
-    else
-      echo 'unknown color: ' . l:color
-    endif
-  endif
-  
+  call s:highlight(l:color, l:text)
 endfunction
 
 
@@ -703,22 +709,7 @@ function s:highlightVisual(...)
     return
   endif
   
-  if empty(l:color) 
-    " color not specified, select a random color
-    let l:randomColor = s:randomColor()
-    echo 'used random color: ' . l:randomColor
-    call s:matchadd(l:randomColor, l:visualSelection)
-  else  
-    " color specified
-    let l:color = s:validateColor(l:color)
-
-    " validate color (is the item in the colors list?)
-    if index(s:colors, l:color) >= 0
-      call s:matchadd(l:color, l:visualSelection)
-    else
-      echo 'unknown color: ' . l:color
-    endif
-  endif  
+  call s:highlight(l:color, l:visualSelection)
 endfunction
 
 
@@ -744,22 +735,7 @@ function s:highlightWordUnderCursor(...)
     echo 'too many arguments.'
   endif 
 
-  if empty(l:color) 
-    " color not specified, select a random color
-    let l:randomColor = s:randomColor()
-    echo 'used random color: ' . l:randomColor
-    call s:matchadd(l:randomColor, l:wordUnderCursor)
-  else  
-    " color specified
-    let l:color = s:validateColor(l:color)
-
-    " validate color (is the item in the colors list?)
-    if index(s:colors, l:color) >= 0
-      call s:matchadd(l:color, l:wordUnderCursor)
-    else
-      echo 'unknown color: ' . l:color
-    endif
-  endif  
+  call s:highlight(l:color, l:wordUnderCursor)
 endfunction
 
 
@@ -785,22 +761,57 @@ function s:highlightCurrentLine(...)
     echo 'too many arguments.'
   endif 
 
-  if empty(l:color) 
-    " color not specified, select a random color
-    let l:randomColor = s:randomColor()
-    echo 'used random color: ' . l:randomColor
-    call s:matchadd(l:randomColor, l:currentLine)
-  else  
-    " color specified
-    let l:color = s:validateColor(l:color)
+  call s:highlight(l:color, l:currentLine)
+endfunction
 
-    " validate color (is the item in the colors list?)
-    if index(s:colors, l:color) >= 0
-      call s:matchadd(l:color, l:currentLine)
-    else
-      echo 'unknown color: ' . l:color
-    endif
-  endif  
+
+function s:highlightYanked(...)
+  " highlight the text of the yanked text 
+  
+  let l:yankedText = getreg("") 
+
+  if empty(l:yankedText)
+    echo 'nothing to highlight'
+    return
+  endif
+
+  let l:color = '' 
+
+  " color argument
+  if a:0 >= 1
+    let l:color = a:1
+  endif 
+  
+  if a:0 > 1
+    echo 'too many arguments.'
+  endif 
+
+  all s:highlight(l:color, l:yankedText)
+endfunction
+
+
+function s:highlightSearch(...)
+  " highlight the searched text 
+  
+  let l:searchText = getreg("/") 
+
+  if empty(l:searchText)
+    echo 'nothing to highlight'
+    return
+  endif
+
+  let l:color = '' 
+
+  " color argument
+  if a:0 >= 1
+    let l:color = a:1
+  endif 
+  
+  if a:0 > 1
+    echo 'too many arguments.'
+  endif 
+
+  call s:highlight(l:color, l:searchText)
 endfunction
 
 
@@ -836,9 +847,13 @@ command! -nargs=* HighlightVisual call s:highlightVisual(<q-args>)
 "
 " HighlightWord
 " HighlightLine
+" HighlightYanked
+" HighlightSearch
 "
 command! -nargs=* HighlightWord call s:highlightWordUnderCursor(<q-args>)
 command! -nargs=* HighlightLine call s:highlightCurrentLine(<q-args>)
+command! -nargs=* HighlightYanked call s:highlightYanked(<q-args>)
+command! -nargs=* HighlightSearch call s:highlightSearch(<q-args>)
 
 "
 " HighlightUndo
