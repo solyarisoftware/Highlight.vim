@@ -6,7 +6,7 @@ from direct set, visual selection, etc.
 
 ![](screenshots/screenshot-4.png?raw=true)
 
-## What?
+## What's the point?
 
 Sometime you need to highlight words, sentences or any character spans in your text files, 
 with a nice background color, with the goal of point out keywords, labels, tags, important sections, etc.
@@ -40,18 +40,22 @@ Using vim-plug, in your `.vimrc` file:
     Plug 'solyarisoftware/Highlight.vim'
 
 
-## 🚀 Usage
+## ⚙️ Usage
 
-In vim command mode you these commands are available:
+In vim command mode (`:`) these commands are available:
 
-- `HighlightColors` visualize all available colors
-- `HighlightText text [color]` highlight a text/regexp with a random or specified color
-- `HighlightVisual [color]` highlight a visual selection  with a random or specified color
-- `HighlightWord [color]` highlight the word under the cursor with a random or specified color
-- `HighlightLine [color]` highlight the current line with a random or specified color
-- `HighlightUndo` undo last highlight command
+| command                       | function                                                              |
+| ---                           | ---                                                                   |
+| `:HighlightColors`            | visualizes all available colors                                       |
+| `:HighlightText text [color]` | highlights a text/regexp with a random or specified color             |
+| `:HighlightVisual [color]`    | highlights a visual selection  with a random or specified color       |
+| `:HighlightWord [color]`      | highlights the word under the cursor with a random or specified color |
+| `:HighlightLine [color]`      | highlights the current line with a random or specified color          |
+| `:HighlightYanked [color]`    | highlights the yanked text with a random or specified color           |
+| `:HighlightSearch [color]`    | highlights the searched text with a random or specified color         |
+| `:HighlightUndo`              | undo lasts highlight command                                          |
 
-⚙️ the plugin uses `matchadd` vimscript function. 
+Behind the scenes, this plugin uses `matchadd` vimscript function. 
 This means that if you highlight a text span instance (say the keyword `temperature_body`), 
 in facts all occurrences of the same text are highlighted with the same color. 
 This is desired and smart, maybe in pretty all cases, but note that Highlight.vim commands act in that way.  
@@ -119,31 +123,6 @@ Highlight a visual selection
   - `HighlightVisual`
   - `HighlightVisual 71`
   - `HighlightVisual color71`
-
-
-### `:HighlightWord [color]` 
-
-Highlight the word under the cursor
-
-- picking a random background color:
-
-        :HighlightWord 
-
-
-### `HighlightLine [color]` 
-
-Highlight the current line
-
-- picking a random background color:
-
-        :HighlightLine 
-
-
-### `HighlightUndo` 
-
-Undo the last Highlight command, 
-
-        :HighlightUndo 
 
 
 ## Todo
