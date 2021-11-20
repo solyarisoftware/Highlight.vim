@@ -1,10 +1,19 @@
 # Highlight.vim
 
-Highlight is a vim plugin to highlight span of texts, using a background color, random picked or specified by user.
+Highlight.vim plugin pattern-based inbackground colorizer, 
+that highlights span of texts (words, sentences, paragraphs),
+using a background color, random picked or specified by user.
+
 A set of user commands (in command mode) are supplied to select text in a bunch of different ways, 
 from direct set, visual selection, etc.
-
 ![](screenshots/screenshot-4.png?raw=true)
+### A pattern-based colorizer?
+
+It means that, behind the scenes, ths plugin uses `matchadd` vimscript function. 
+This means that if you highlight a text span instance (say the keyword `temperature_body`), 
+in facts all occurrences of the same text are highlighted with the same color. 
+This is desired and smart maybe in pretty all cases. 
+
 
 ## What's the point?
 
@@ -40,7 +49,7 @@ Using vim-plug, in your `.vimrc` file:
     Plug 'solyarisoftware/Highlight.vim'
 
 
-## ⚙️ Usage
+## Usage
 
 In vim command mode (`:`) these commands are available:
 
@@ -54,11 +63,7 @@ In vim command mode (`:`) these commands are available:
 | `:HighlightYanked [color]`    | highlights the yanked text with a random or specified color           |
 | `:HighlightSearch [color]`    | highlights the searched text with a random or specified color         |
 | `:HighlightUndo`              | undo lasts highlight command                                          |
-
-Behind the scenes, this plugin uses `matchadd` vimscript function. 
-This means that if you highlight a text span instance (say the keyword `temperature_body`), 
-in facts all occurrences of the same text are highlighted with the same color. 
-This is desired and smart, maybe in pretty all cases, but note that Highlight.vim commands act in that way.  
+| `:HighlightRunScript`         | execute all Highlight* commands in specified script file              |
 
 
 ### `:HighlightColors` 
@@ -123,6 +128,24 @@ Highlight a visual selection
   - `HighlightVisual`
   - `HighlightVisual 71`
   - `HighlightVisual color71`
+
+
+### `:HighlightRunScript script_file_name` 
+
+Execute all Highlight* commands in specified script file.
+By example suppose you want to highlight a list of kweywords at once.
+So you create a script file `my_script_file.script` containing all your Highlight commands as:
+
+    HighlightText my_keyword              color43
+    HighlightText anoter_keyword          color43
+    HighlightText a_third_keyword         color43
+    HighlightText a\ sentence             color109
+    HighlightText another\ full\ sentence color78
+    HighlightText again_another_keyword   color55
+
+Afterward you run the script:
+
+    :HighlightRunScript my_script_file.script
 
 
 ## Todo
