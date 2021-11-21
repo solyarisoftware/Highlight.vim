@@ -7,6 +7,8 @@ using a background color, random picked or specified by user.
 A set of user commands (in command mode) are supplied to select text in a bunch of different ways, 
 from direct set, visual selection, etc.
 
+![](screenshot-4.png)
+
 ### What's the point?
 
 Sometime you need to highlight words, sentences or any character spans in your text files, 
@@ -180,7 +182,7 @@ By example, to assign the command `:HighlightText Screenshots` to the key `F2`:
 
     map <F2> :HighlightText Screenshots<CR>
 
-Or you want to assign the command `:HighlightYanked 134` to the key `F3:
+Or you want to assign the command `:HighlightYanked 134` to the key `F3`:
 
     map <F3> :HighlightYanked 134<CR>
 
