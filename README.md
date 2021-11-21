@@ -63,7 +63,7 @@ In vim command mode (`:`) these commands are available:
 | `:HighlightYanked [color]`    | highlights the yanked text with a random or specified color           |
 | `:HighlightSearch [color]`    | highlights the searched text with a random or specified color         |
 | `:HighlightUndo`              | undo lasts highlight command                                          |
-| `:HighlightRunScript`         | execute all Highlight* commands in specified script file              |
+| `:HighlightRunScript script`  | execute all Highlight* commands in specified script file              |
 
 
 ### `:HighlightColors` 
@@ -134,7 +134,7 @@ Highlight a visual selection
 
 Execute all Highlight* commands in specified script file.
 By example suppose you want to highlight a list of kweywords at once.
-So you create a script file `my_script_file.script` containing all your Highlight commands as:
+So you create a script file `my_highlight.script` containing all your Highlight commands as:
 
     HighlightText my_keyword              color43
     HighlightText anoter_keyword          color43
@@ -145,7 +145,7 @@ So you create a script file `my_script_file.script` containing all your Highligh
 
 Afterward you run the script:
 
-    :HighlightRunScript my_script_file.script
+    :HighlightRunScript my_highlight.script
 
 
 ## Todo

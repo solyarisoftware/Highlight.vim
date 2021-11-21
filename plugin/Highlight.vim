@@ -23,7 +23,7 @@
 " Vim version:
 "   > 8.1.2342 (because Rand() function)
 "
-source colors.vim
+runtime colors.vim
 
 
 " Absolute path of script file with symbolic links resolved:
