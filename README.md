@@ -1,12 +1,13 @@
 # Highlight.vim
 
+![](screenshots/screenshot-4.png)
+
 Highlight.vim plugin is a pattern-based text background colorizer, 
 that highlights span of texts (words, sentences, paragraphs),
 using a background color, random picked or specified by user.
+
 A set of user commands (in command mode) are supplied to select text 
 in a bunch of different ways, from direct set, visual selection, etc.
-
-![](screenshots/screenshot-4.png)
 
 **What's the point?**
 
@@ -61,12 +62,12 @@ Using vim-plug, in your `.vimrc` file:
 In vim command mode (`:`) these commands are available:
 
 Explicit text highlight:
-| <!-- -->                      |  <!-- -->                                                             |
+| command                       | description                                                           |
 | ---                           | ---                                                                   |
 | `:HighlightText text [color]` | highlights a text/regexp with a random or specified color             |
 
 Visual/Motion highlight:
-| <!-- -->                      |  <!-- -->                                                             |
+| command                       | description                                                           |
 | ---                           | ---                                                                   |
 | `:HighlightVisual [color]`    | highlights a visual selection  with a random or specified color       |
 | `:HighlightLine [color]`      | highlights the current line with a random or specified color          |
@@ -75,7 +76,7 @@ Visual/Motion highlight:
 | `:HighlightSearch [color]`    | highlights the searched text with a random or specified color         |
 
 Utilities:
-| <!-- -->                      |  <!-- -->                                                             |
+| command                       | description                                                           |
 | ---                           | ---                                                                   |
 | `:HighlightColors`            | visualizes all available colors                                       |
 | `:HighlightUndo`              | undo lasts highlight command                                          |
