@@ -555,6 +555,78 @@ let s:colors = [
   \'color255',
 \]
 
+
+let s:labelColorDictionary = {}
+
+
+function s:setLabelColor(label, color)
+  let s:labelColorDictionary[a:label] = a:color
+endfunction
+
+function s:getLabelColor(label)
+  if has_key(s:labelColorDictionary, a:label)
+    return s:labelColorDictionary[a:label]
+  endif  
+endfunction
+
+function s:labelColor(...)
+  " assign a label (alias) to a color name 
+
+  " at least 1 argument is required
+  if a:0 == 0
+    echo 'arguments not supplied: <label> <color>'
+    return
+  endif
+
+  " text argument supplied
+  if a:0 >= 1
+    let l:label = a:1
+  endif 
+
+  " color argument assigned?
+  if a:0 == 2
+    let l:color = a:2
+  endif 
+  
+  if a:0 > 2
+    echo 'too many arguments. required: <label> <color>'
+    return
+  endif 
+  
+  call s:setLabelColor(l:label, l:color)
+  echo 'label <' . l:label . '> assigned to color <' . l:color . '>'
+endfunction
+
+
+function s:validateColor(color)
+  "
+  " if color argument is a number (e.g. 123)
+  " then the color become 'color123'
+  "
+  " return a valid color name, or nothing
+  "
+  if a:color =~ '\v<\d+>'
+    " color is specified as a number
+    let l:color = 'color' . a:color
+  else
+    " is color specified asa alabel(alias)?
+    let l:color = s:getLabelColor(a:color)
+    if empty(l:color)
+      " color is specified as a color name (not a label) 
+      let l:color = a:color
+    endif
+  endif
+
+  " validate color (is the item in the colors list?)
+  if index(s:colors, l:color) >= 0
+    echo 'used color: ' . l:color
+    return l:color
+  else
+    echo 'unknown color: ' . l:color
+  endif
+endfunction
+
+:
 " Absolute path of script file with symbolic links resolved:
 " let s:path = resolve(expand('<sfile>:p'))
 "     execute "edit +1 " . s:path . "colors_table.txt"
@@ -571,17 +643,6 @@ function s:randomColor()
   return s:colors[rand() % len(s:colors)]
 endfunction
 
-
-function s:validateColor(color)
-    " if color argument is a number (e.g. 123)
-    " then the color is 'color123'
-    if a:color =~ '\v<\d+>'
-      return 'color' . a:color
-    else
-      return a:color
-    endif
-
-endfunction
 
 
 " list of all matchadd items
@@ -640,17 +701,15 @@ function s:highlight(color, text)
     let l:randomColor = s:randomColor()
     call s:matchadd(l:randomColor, a:text)
     echo 'used random color: ' . l:randomColor
+
   else  
     " color argument specified
     let l:color = s:validateColor(a:color)
 
-    " validate color (is the item in the colors list?)
-    if index(s:colors, l:color) >= 0
+    if !empty(l:color)
       call s:matchadd(l:color, a:text)
-      echo 'used color: ' . l:color
-    else
-      echo 'unknown color: ' . l:color
     endif
+
   endif  
 endfunction
 
@@ -857,3 +916,5 @@ command! -nargs=* HighlightSearch call s:highlightSearch(<q-args>)
 command! HighlightColors call s:highlightColors()
 command! HighlightUndo call s:highlightUndo()
 command! -nargs=1 HighlightScript silent call s:runScript(<f-args>)
+
+command! -nargs=* HighlightLabelColor call s:labelColor(<f-args>)

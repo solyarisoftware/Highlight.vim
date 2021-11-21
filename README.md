@@ -64,25 +64,26 @@ Using vim-plug, in your `.vimrc` file:
 In vim command mode (`:`) these commands are available:
 
 Explicit text highlight:
-| <div style="width:300px">command</div> | description                                                           |
-| ---                                  | ---                                                                   |
-| `:HighlightText text [color]`        | highlights a text/regexp with a random or specified color             |
+| command                            | description                                                           |
+| ---                                | ---                                                                   |
+| `:HighlightText text [color]`      | highlights a text/regexp with a random or specified color             |
 
 Visual/Motion highlight:
-| <div style="width:300px">command</div> | description                                                           |
-| ---                                  | ---                                                                   |
-| `:HighlightVisual [color]`           | highlights a visual selection  with a random or specified color       |
-| `:HighlightLine [color]`             | highlights the current line with a random or specified color          |
-| `:HighlightYanked [color]`           | highlights the yanked text with a random or specified color           |
-| `:HighlightCursor [color]`           | highlights the word under the cursor with a random or specified color |
-| `:HighlightSearch [color]`           | highlights the searched text with a random or specified color         |
+| command                            | description                                                           |
+| ---                                | ---                                                                   |
+| `:HighlightVisual [color]`         | highlights a visual selection  with a random or specified color       |
+| `:HighlightLine [color]`           | highlights the current line with a random or specified color          |
+| `:HighlightYanked [color]`         | highlights the yanked text with a random or specified color           |
+| `:HighlightCursor [color]`         | highlights the word under the cursor with a random or specified color |
+| `:HighlightSearch [color]`         | highlights the searched text with a random or specified color         |
 
 Utilities:
-| <div style="width:300px">command</div> | description                                                           |
-| ---                                  | ---                                                                   |
-| `:HighlightColors`                   | visualizes all available colors                                       |
-| `:HighlightUndo`                     | undo lasts highlight command                                          |
-| `:HighlightScript script_file`       | execute all Highlight* commands in specified script fil               |
+| command                            | description                                                           |
+| ---                                | ---                                                                   |
+| `:HighlightColors`                 | visualizes all available colors                                       |
+| `:HighlightUndo`                   | undo lasts highlight command                                          |
+| `:HighlightLabelColor label color` | Assign a label (alias) to a color name                                |
+| `:HighlightScript script_file`     | execute all Highlight* commands in specified script fil                |
 
 
 ### `:HighlightText text [color]` 
@@ -155,6 +156,17 @@ A color name is one of the items:
 in all commands below you can just pass the color also as a number, 
 by example: `color18` could be referred also as `18`
 
+### `:HighlightLabelColor label color` 
+
+Assign a label (alias) name to a color name. That's useful when you want to assign logical classes (labels) 
+to the same color, for a visual "unification", by example:
+
+    :HighlightLabelColor verb color55
+    :HighlightText go verb
+    :HighlightText went verb
+    :HighlightText come verb
+    :HighlightText came verb
+
 ### `:HighlightScript script_file` 
 
 Execute all Highlight* commands in specified script file.
@@ -162,15 +174,15 @@ By example you want to highlight a list of keywords at once.
 So you create a script file `my_highlight.script` containing all your Highlight commands as:
 
 ```
-  "
-  " my_highlight.script
-  "
-  HighlightText my_keyword              color43
-  HighlightText anoter_keyword          color43
-  HighlightText a_third_keyword         color43
-  HighlightText a\ sentence             color109
-  HighlightText another\ full\ sentence color78
-  HighlightText again_another_keyword   color55
+"
+" my_highlight.script
+"
+HighlightText my_keyword              color43
+HighlightText anoter_keyword          color43
+HighlightText a_third_keyword         color43
+HighlightText a\ sentence             color109
+HighlightText another\ full\ sentence color78
+HighlightText again_another_keyword   color55
 ``` 
 
 Afterward you run the script from command mode:
