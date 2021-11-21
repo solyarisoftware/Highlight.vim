@@ -7,7 +7,7 @@ using a background color, random picked or specified by user.
 A set of user commands (in command mode) are supplied to select text in a bunch of different ways, 
 from direct set, visual selection, etc.
 
-![](screenshot-4.png)
+![](screenshots/screenshot-4.png)
 
 ### What's the point?
 
