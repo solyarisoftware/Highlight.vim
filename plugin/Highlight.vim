@@ -23,7 +23,6 @@
 " Vim version:
 "   > 8.1.2342 (because Rand() function)
 "
-"runtime colors.vim
 
 "
 " define color names
@@ -798,7 +797,7 @@ function s:highlightYanked(...)
     echo 'too many arguments.'
   endif 
 
-  all s:highlight(l:color, l:yankedText)
+  call s:highlight(l:color, l:yankedText)
 endfunction
 
 
@@ -827,7 +826,7 @@ function s:highlightSearch(...)
 endfunction
 
 
-" load list of (Highlight) commands and execute these
+" load list of (Highlight) commands from a file and execute (run) these
 function s:runScript(filename)
 
   if !filereadable(a:filename)
@@ -839,7 +838,7 @@ function s:runScript(filename)
     execute line
   endfor  
 
-  echo "executed script file: " . a:filename
+  "echo "executed script file: " . a:filename
 
 endfunction  
 
@@ -847,36 +846,14 @@ endfunction
 "
 " USER DEFINED COMMANDS
 "
-
-"
-" HighlightShowColors
-"
-command! HighlightColors call s:highlightColors()
-
-"
-" HighlightText
-"
 command! -nargs=* HighlightText call s:highlightText(<f-args>)
 
-"
-" HighlightVisual
-"
 command! -nargs=* HighlightVisual call s:highlightVisual(<q-args>)
-
-"
-" HighlightWord
-" HighlightLine
-" HighlightYanked
-" HighlightSearch
-"
-command! -nargs=* HighlightWord call s:highlightWordUnderCursor(<q-args>)
 command! -nargs=* HighlightLine call s:highlightCurrentLine(<q-args>)
+command! -nargs=* HighlightCursor call s:highlightWordUnderCursor(<q-args>)
 command! -nargs=* HighlightYanked call s:highlightYanked(<q-args>)
 command! -nargs=* HighlightSearch call s:highlightSearch(<q-args>)
 
-"
-" HighlightUndo
-"
+command! HighlightColors call s:highlightColors()
 command! HighlightUndo call s:highlightUndo()
-
-command! -nargs=1 HighlightRunScript call s:runScript(<f-args>)
+command! -nargs=1 HighlightScript silent call s:runScript(<f-args>)
