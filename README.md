@@ -1,5 +1,7 @@
 # Highlight.vim
 
+**If you like the project, please ⭐️star this repository to show your support! 🙏**
+
 ![](screenshots/screenshot-4.png)
 
 Highlight.vim plugin is a pattern-based text background colorizer, 
@@ -62,25 +64,25 @@ Using vim-plug, in your `.vimrc` file:
 In vim command mode (`:`) these commands are available:
 
 Explicit text highlight:
-| command                       | description                                                           |
-| ---                           | ---                                                                   |
-| `:HighlightText text [color]` | highlights a text/regexp with a random or specified color             |
+| <div style="width:20%">command</div> | description                                                           |
+| ---                                  | ---                                                                   |
+| `:HighlightText text [color]`        | highlights a text/regexp with a random or specified color             |
 
 Visual/Motion highlight:
-| command                       | description                                                           |
-| ---                           | ---                                                                   |
-| `:HighlightVisual [color]`    | highlights a visual selection  with a random or specified color       |
-| `:HighlightLine [color]`      | highlights the current line with a random or specified color          |
-| `:HighlightYanked [color]`    | highlights the yanked text with a random or specified color           |
-| `:HighlightCursor [color]`    | highlights the word under the cursor with a random or specified color |
-| `:HighlightSearch [color]`    | highlights the searched text with a random or specified color         |
+| <div style="width:20%">command</div> | description                                                           |
+| ---                                  | ---                                                                   |
+| `:HighlightVisual [color]`           | highlights a visual selection  with a random or specified color       |
+| `:HighlightLine [color]`             | highlights the current line with a random or specified color          |
+| `:HighlightYanked [color]`           | highlights the yanked text with a random or specified color           |
+| `:HighlightCursor [color]`           | highlights the word under the cursor with a random or specified color |
+| `:HighlightSearch [color]`           | highlights the searched text with a random or specified color         |
 
 Utilities:
-| command                       | description                                                           |
-| ---                           | ---                                                                   |
-| `:HighlightColors`            | visualizes all available colors                                       |
-| `:HighlightUndo`              | undo lasts highlight command                                          |
-| `:HighlightScript script_file`| execute all Highlight* commands in specified script fil               |
+| <div style="width:20%">command</div> | description                                                           |
+| ---                                  | ---                                                                   |
+| `:HighlightColors`                   | visualizes all available colors                                       |
+| `:HighlightUndo`                     | undo lasts highlight command                                          |
+| `:HighlightScript script_file`       | execute all Highlight* commands in specified script fil               |
 
 
 ### `:HighlightText text [color]` 
@@ -207,11 +209,12 @@ Some examples [here](screenshots/)
 
 ## Status / How to contribute
 
-**If you like the project, please ⭐️star this repository to show your support! 🙏**
-
 This project is work-in-progress.
 
 I'm not a vimscript expert, so any contribute is welcome.
+
+**If you like the project, please ⭐️star this repository to show your support! 🙏**
+
 For any proposal and issue, please submit here on github issues for bugs, suggestions, etc.
 You can also contact me via email (giorgio.robino@gmail.com).
 
