@@ -60,26 +60,26 @@ Using vim-plug, in your `.vimrc` file:
 
 In vim command mode (`:`) these commands are available:
 
-- Explicit text highlight
-  |                               |                                                                       |
-  | ---                           | ---                                                                   |
-  | `:HighlightText text [color]` | highlights a text/regexp with a random or specified color             |
+Explicit text highlight:
+| <!-- -->                      |  <!-- -->                                                             |
+| ---                           | ---                                                                   |
+| `:HighlightText text [color]` | highlights a text/regexp with a random or specified color             |
 
-- Visual/Motion highlight
-  |                               |                                                                       |
-  | ---                           | ---                                                                   |
-  | `:HighlightVisual [color]`    | highlights a visual selection  with a random or specified color       |
-  | `:HighlightLine [color]`      | highlights the current line with a random or specified color          |
-  | `:HighlightYanked [color]`    | highlights the yanked text with a random or specified color           |
-  | `:HighlightCursor [color]`    | highlights the word under the cursor with a random or specified color |
-  | `:HighlightSearch [color]`    | highlights the searched text with a random or specified color         |
+Visual/Motion highlight:
+| <!-- -->                      |  <!-- -->                                                             |
+| ---                           | ---                                                                   |
+| `:HighlightVisual [color]`    | highlights a visual selection  with a random or specified color       |
+| `:HighlightLine [color]`      | highlights the current line with a random or specified color          |
+| `:HighlightYanked [color]`    | highlights the yanked text with a random or specified color           |
+| `:HighlightCursor [color]`    | highlights the word under the cursor with a random or specified color |
+| `:HighlightSearch [color]`    | highlights the searched text with a random or specified color         |
 
-- Utilities 
-  |                               |                                                                       |
-  | ---                           | ---                                                                   |
-  | `:HighlightColors`            | visualizes all available colors                                       |
-  | `:HighlightUndo`              | undo lasts highlight command                                          |
-  | `:HighlightScript script`     | execute all Highlight* commands in specified script file               |
+Utilities:
+| <!-- -->                      |  <!-- -->                                                             |
+| ---                           | ---                                                                   |
+| `:HighlightColors`            | visualizes all available colors                                       |
+| `:HighlightUndo`              | undo lasts highlight command                                          |
+| `:HighlightScript script_file`| execute all Highlight* commands in specified script fil               |
 
 
 ### `:HighlightText text [color]` 
