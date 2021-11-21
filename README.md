@@ -64,12 +64,12 @@ Using vim-plug, in your `.vimrc` file:
 In vim command mode (`:`) these commands are available:
 
 Explicit text highlight:
-| <div style="width:20%">command</div> | description                                                           |
+| <div style="width:300px">command</div> | description                                                           |
 | ---                                  | ---                                                                   |
 | `:HighlightText text [color]`        | highlights a text/regexp with a random or specified color             |
 
 Visual/Motion highlight:
-| <div style="width:20%">command</div> | description                                                           |
+| <div style="width:300px">command</div> | description                                                           |
 | ---                                  | ---                                                                   |
 | `:HighlightVisual [color]`           | highlights a visual selection  with a random or specified color       |
 | `:HighlightLine [color]`             | highlights the current line with a random or specified color          |
@@ -78,7 +78,7 @@ Visual/Motion highlight:
 | `:HighlightSearch [color]`           | highlights the searched text with a random or specified color         |
 
 Utilities:
-| <div style="width:20%">command</div> | description                                                           |
+| <div style="width:300px">command</div> | description                                                           |
 | ---                                  | ---                                                                   |
 | `:HighlightColors`                   | visualizes all available colors                                       |
 | `:HighlightUndo`                     | undo lasts highlight command                                          |
