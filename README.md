@@ -3,13 +3,12 @@
 Highlight.vim plugin is a pattern-based text background colorizer, 
 that highlights span of texts (words, sentences, paragraphs),
 using a background color, random picked or specified by user.
-
-A set of user commands (in command mode) are supplied to select text in a bunch of different ways, 
-from direct set, visual selection, etc.
+A set of user commands (in command mode) are supplied to select text 
+in a bunch of different ways, from direct set, visual selection, etc.
 
 ![](screenshots/screenshot-4.png)
 
-### What's the point?
+**What's the point?**
 
 Sometime you need to highlight words, sentences or any character spans in your text files, 
 with a nice background color, with the goal of point out keywords, labels, tags, important sections, etc.
@@ -22,7 +21,7 @@ I personally have this need:
 - When programming in a standard programming language (NodeJs, Python) 
   just to put in evidence function names, variables, etc.
 
-### Why really?
+**What's the original goal?**
 
 This project is related to the original (open) points raised from my vi stackexchange questions:
 
@@ -31,7 +30,7 @@ This project is related to the original (open) points raised from my vi stackexc
 The final goal is to create a plugin to annotate "conversational AI" / NLP attributes 
 (intents, entities, etc.) within the vim editor! Stay tuned!
 
-### Background colors?
+**Background colors?**
 
 What I mean with *highlight* is to colorize the background of a text span.
 This plugin currently uses a subset of cterm/xterm 256 colors, suitable for terminal mode.
@@ -42,7 +41,7 @@ I decide to use black (ctermfg=0) as fixed foreground color. That's opinabile.
 The reason why of the subset is because some (too dark) colors 
 do not make a suitable contrast with the black foreground color. 
 
-### A pattern-based colorizer?
+**A pattern-based colorizer?**
 
 It means that, behind the scenes, the plugin uses `matchadd` vimscript function (`help matchadd`). 
 This means that if you highlight a text span instance (say the keyword `temperature_body`), 
