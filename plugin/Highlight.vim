@@ -26,6 +26,7 @@
 
 "
 " define color names
+" foreground color white
 "
 highlight color1  ctermbg=1  ctermfg=0
 highlight color2  ctermbg=2  ctermfg=0
@@ -283,18 +284,286 @@ highlight color253 ctermbg=253 ctermfg=0
 highlight color254 ctermbg=254 ctermfg=0
 highlight color255 ctermbg=255 ctermfg=0
 
+"
+" define color names
+" foreground color white
+"
+highlight color1001  ctermbg=1  ctermfg=255
+highlight color1002  ctermbg=2  ctermfg=255
+highlight color1003  ctermbg=3  ctermfg=255
+highlight color1004  ctermbg=4  ctermfg=255
+highlight color1005  ctermbg=5  ctermfg=255
+highlight color1006  ctermbg=6  ctermfg=255
+highlight color1007  ctermbg=7  ctermfg=255
+highlight color1008  ctermbg=8  ctermfg=255
+highlight color1009  ctermbg=9  ctermfg=255
+highlight color1010  ctermbg=10  ctermfg=255
+highlight color1011  ctermbg=11  ctermfg=255
+highlight color1012  ctermbg=12  ctermfg=255
+highlight color1013  ctermbg=13  ctermfg=255
+"highlight color1014  ctermbg=14  ctermfg=255
+"highlight color1015  ctermbg=15  ctermfg=255
+highlight color1016  ctermbg=16  ctermfg=255
+highlight color1017  ctermbg=17  ctermfg=255
+highlight color1018  ctermbg=18  ctermfg=255
+highlight color1019  ctermbg=19  ctermfg=255
+highlight color1020  ctermbg=20  ctermfg=255
+highlight color1021  ctermbg=21  ctermfg=255
+highlight color1022  ctermbg=22  ctermfg=255
+highlight color1023  ctermbg=23  ctermfg=255
+highlight color1024  ctermbg=24  ctermfg=255
+highlight color1025  ctermbg=25  ctermfg=255
+highlight color1026  ctermbg=26  ctermfg=255
+highlight color1027  ctermbg=27  ctermfg=255
+highlight color1028  ctermbg=28  ctermfg=255
+highlight color1029  ctermbg=29  ctermfg=255
+highlight color1030  ctermbg=30  ctermfg=255
+highlight color1031  ctermbg=31  ctermfg=255
+highlight color1032  ctermbg=32  ctermfg=255
+highlight color1033  ctermbg=33  ctermfg=255
+highlight color1034  ctermbg=34  ctermfg=255
+highlight color1035  ctermbg=35  ctermfg=255
+highlight color1036  ctermbg=36  ctermfg=255
+highlight color1037  ctermbg=37  ctermfg=255
+highlight color1038  ctermbg=38  ctermfg=255
+highlight color1039  ctermbg=39  ctermfg=255
+highlight color1040  ctermbg=40  ctermfg=255
+highlight color1041  ctermbg=41  ctermfg=255
+highlight color1042  ctermbg=42  ctermfg=255
+highlight color1043  ctermbg=43  ctermfg=255
+highlight color1044  ctermbg=44  ctermfg=255
+highlight color1045  ctermbg=45  ctermfg=255
+"highlight color1046  ctermbg=46  ctermfg=255
+"highlight color1047  ctermbg=47  ctermfg=255
+"highlight color1048  ctermbg=48  ctermfg=255
+"highlight color1049  ctermbg=49  ctermfg=255
+"highlight color1050  ctermbg=50  ctermfg=255
+"highlight color1051  ctermbg=51  ctermfg=255
+highlight color1052  ctermbg=52  ctermfg=255
+highlight color1053  ctermbg=53  ctermfg=255
+highlight color1054  ctermbg=54  ctermfg=255
+highlight color1055  ctermbg=55  ctermfg=255
+highlight color1056  ctermbg=56  ctermfg=255
+highlight color1057  ctermbg=57  ctermfg=255
+highlight color1058  ctermbg=58  ctermfg=255
+highlight color1059  ctermbg=59  ctermfg=255
+highlight color1060  ctermbg=60  ctermfg=255
+highlight color1061  ctermbg=61  ctermfg=255
+highlight color1062  ctermbg=62  ctermfg=255
+highlight color1063  ctermbg=63  ctermfg=255
+highlight color1064  ctermbg=64  ctermfg=255
+highlight color1065  ctermbg=65  ctermfg=255
+highlight color1066  ctermbg=66  ctermfg=255
+highlight color1067  ctermbg=67  ctermfg=255
+highlight color1068  ctermbg=68  ctermfg=255
+highlight color1069  ctermbg=69  ctermfg=255
+highlight color1070  ctermbg=70  ctermfg=255
+highlight color1071  ctermbg=71  ctermfg=255
+highlight color1072  ctermbg=72  ctermfg=255
+highlight color1073  ctermbg=73  ctermfg=255
+highlight color1074  ctermbg=74  ctermfg=255
+highlight color1075  ctermbg=75  ctermfg=255
+highlight color1076  ctermbg=76  ctermfg=255
+highlight color1077  ctermbg=77  ctermfg=255
+highlight color1078  ctermbg=78  ctermfg=255
+highlight color1079  ctermbg=79  ctermfg=255
+highlight color1080  ctermbg=80  ctermfg=255
+highlight color1081  ctermbg=81  ctermfg=255
+"highlight color1082  ctermbg=82  ctermfg=255
+"highlight color1083  ctermbg=83  ctermfg=255
+"highlight color1084  ctermbg=84  ctermfg=255
+"highlight color1085  ctermbg=85  ctermfg=255
+"highlight color1086  ctermbg=86  ctermfg=255
+"highlight color1087  ctermbg=87  ctermfg=255
+highlight color1088  ctermbg=88  ctermfg=255
+highlight color1089  ctermbg=89  ctermfg=255
+highlight color1090  ctermbg=90  ctermfg=255
+highlight color1091  ctermbg=91  ctermfg=255
+highlight color1092  ctermbg=92  ctermfg=255
+highlight color1093  ctermbg=93  ctermfg=255
+highlight color1094  ctermbg=94  ctermfg=255
+highlight color1095  ctermbg=95  ctermfg=255
+highlight color1096  ctermbg=96  ctermfg=255
+highlight color1097  ctermbg=97  ctermfg=255
+highlight color1098  ctermbg=98  ctermfg=255
+highlight color1099  ctermbg=99  ctermfg=255
+highlight color1100 ctermbg=100 ctermfg=255
+highlight color1101 ctermbg=101 ctermfg=255
+highlight color1102 ctermbg=102 ctermfg=255
+highlight color1103 ctermbg=103 ctermfg=255
+highlight color1104 ctermbg=104 ctermfg=255
+highlight color1105 ctermbg=105 ctermfg=255
+highlight color1106 ctermbg=106 ctermfg=255
+highlight color1107 ctermbg=107 ctermfg=255
+highlight color1108 ctermbg=108 ctermfg=255
+highlight color1109 ctermbg=109 ctermfg=255
+highlight color1110 ctermbg=110 ctermfg=255
+highlight color1111 ctermbg=111 ctermfg=255
+highlight color1112 ctermbg=112 ctermfg=255
+highlight color1113 ctermbg=113 ctermfg=255
+highlight color1114 ctermbg=114 ctermfg=255
+highlight color1115 ctermbg=115 ctermfg=255
+highlight color1116 ctermbg=116 ctermfg=255
+highlight color1117 ctermbg=117 ctermfg=255
+"highlight color1118 ctermbg=118 ctermfg=255
+"highlight color1119 ctermbg=119 ctermfg=255
+"highlight color1120 ctermbg=120 ctermfg=255
+"highlight color1121 ctermbg=121 ctermfg=255
+"highlight color1122 ctermbg=122 ctermfg=255
+"highlight color1123 ctermbg=123 ctermfg=255
+highlight color1124 ctermbg=124 ctermfg=255
+highlight color1125 ctermbg=125 ctermfg=255
+highlight color1126 ctermbg=126 ctermfg=255
+highlight color1127 ctermbg=127 ctermfg=255
+highlight color1128 ctermbg=128 ctermfg=255
+highlight color1129 ctermbg=129 ctermfg=255
+highlight color1130 ctermbg=130 ctermfg=255
+highlight color1131 ctermbg=131 ctermfg=255
+highlight color1132 ctermbg=132 ctermfg=255
+highlight color1133 ctermbg=133 ctermfg=255
+highlight color1134 ctermbg=134 ctermfg=255
+highlight color1135 ctermbg=135 ctermfg=255
+highlight color1136 ctermbg=136 ctermfg=255
+highlight color1137 ctermbg=137 ctermfg=255
+highlight color1138 ctermbg=138 ctermfg=255
+highlight color1139 ctermbg=139 ctermfg=255
+highlight color1140 ctermbg=140 ctermfg=255
+highlight color1141 ctermbg=141 ctermfg=255
+highlight color1142 ctermbg=142 ctermfg=255
+highlight color1143 ctermbg=143 ctermfg=255
+highlight color1144 ctermbg=144 ctermfg=255
+highlight color1145 ctermbg=145 ctermfg=255
+highlight color1146 ctermbg=146 ctermfg=255
+highlight color1147 ctermbg=147 ctermfg=255
+highlight color1148 ctermbg=148 ctermfg=255
+highlight color1149 ctermbg=149 ctermfg=255
+highlight color1150 ctermbg=150 ctermfg=255
+highlight color1151 ctermbg=151 ctermfg=255
+highlight color1152 ctermbg=152 ctermfg=255
+highlight color1153 ctermbg=153 ctermfg=255
+"highlight color1154 ctermbg=154 ctermfg=255
+"highlight color1155 ctermbg=155 ctermfg=255
+"highlight color1156 ctermbg=156 ctermfg=255
+"highlight color1157 ctermbg=157 ctermfg=255
+"highlight color1158 ctermbg=158 ctermfg=255
+"highlight color1159 ctermbg=159 ctermfg=255
+highlight color1160 ctermbg=160 ctermfg=255
+highlight color1161 ctermbg=161 ctermfg=255
+highlight color1162 ctermbg=162 ctermfg=255
+highlight color1163 ctermbg=163 ctermfg=255
+highlight color1164 ctermbg=164 ctermfg=255
+highlight color1165 ctermbg=165 ctermfg=255
+highlight color1166 ctermbg=166 ctermfg=255
+highlight color1167 ctermbg=167 ctermfg=255
+highlight color1168 ctermbg=168 ctermfg=255
+highlight color1169 ctermbg=169 ctermfg=255
+highlight color1170 ctermbg=170 ctermfg=255
+highlight color1171 ctermbg=171 ctermfg=255
+highlight color1172 ctermbg=172 ctermfg=255
+highlight color1173 ctermbg=173 ctermfg=255
+highlight color1174 ctermbg=174 ctermfg=255
+highlight color1175 ctermbg=175 ctermfg=255
+highlight color1176 ctermbg=176 ctermfg=255
+highlight color1177 ctermbg=177 ctermfg=255
+highlight color1178 ctermbg=178 ctermfg=255
+highlight color1179 ctermbg=179 ctermfg=255
+highlight color1180 ctermbg=180 ctermfg=255
+highlight color1181 ctermbg=181 ctermfg=255
+highlight color1182 ctermbg=182 ctermfg=255
+highlight color1183 ctermbg=183 ctermfg=255
+highlight color1184 ctermbg=184 ctermfg=255
+highlight color1185 ctermbg=185 ctermfg=255
+highlight color1186 ctermbg=186 ctermfg=255
+highlight color1187 ctermbg=187 ctermfg=255
+highlight color1188 ctermbg=188 ctermfg=255
+highlight color1189 ctermbg=189 ctermfg=255
+highlight color1190 ctermbg=190 ctermfg=255
+highlight color1191 ctermbg=191 ctermfg=255
+"highlight color1192 ctermbg=192 ctermfg=255
+"highlight color1193 ctermbg=193 ctermfg=255
+"highlight color1194 ctermbg=194 ctermfg=255
+"highlight color1195 ctermbg=195 ctermfg=255
+"highlight color1196 ctermbg=196 ctermfg=255
+"highlight color1197 ctermbg=197 ctermfg=255
+highlight color1198 ctermbg=198 ctermfg=255
+highlight color1199 ctermbg=199 ctermfg=255
+highlight color1200 ctermbg=200 ctermfg=255
+highlight color1201 ctermbg=201 ctermfg=255
+highlight color1202 ctermbg=202 ctermfg=255
+highlight color1203 ctermbg=203 ctermfg=255
+highlight color1204 ctermbg=204 ctermfg=255
+highlight color1205 ctermbg=205 ctermfg=255
+highlight color1206 ctermbg=206 ctermfg=255
+highlight color1207 ctermbg=207 ctermfg=255
+highlight color1208 ctermbg=208 ctermfg=255
+highlight color1209 ctermbg=209 ctermfg=255
+highlight color1210 ctermbg=210 ctermfg=255
+highlight color1211 ctermbg=211 ctermfg=255
+highlight color1212 ctermbg=212 ctermfg=255
+highlight color1213 ctermbg=213 ctermfg=255
+highlight color1214 ctermbg=214 ctermfg=255
+highlight color1215 ctermbg=215 ctermfg=255
+highlight color1216 ctermbg=216 ctermfg=255
+highlight color1217 ctermbg=217 ctermfg=255
+highlight color1218 ctermbg=218 ctermfg=255
+highlight color1219 ctermbg=219 ctermfg=255
+highlight color1220 ctermbg=220 ctermfg=255
+highlight color1221 ctermbg=221 ctermfg=255
+highlight color1222 ctermbg=222 ctermfg=255
+highlight color1223 ctermbg=223 ctermfg=255
+highlight color1224 ctermbg=224 ctermfg=255
+highlight color1225 ctermbg=225 ctermfg=255
+"highlight color1226 ctermbg=226 ctermfg=255
+"highlight color1227 ctermbg=227 ctermfg=255
+"highlight color1228 ctermbg=228 ctermfg=255
+"highlight color1229 ctermbg=229 ctermfg=255
+"highlight color1230 ctermbg=230 ctermfg=255
+"highlight color1231 ctermbg=231 ctermfg=255
+highlight color1232 ctermbg=232 ctermfg=255
+highlight color1233 ctermbg=233 ctermfg=255
+highlight color1234 ctermbg=234 ctermfg=255
+highlight color1235 ctermbg=235 ctermfg=255
+highlight color1236 ctermbg=236 ctermfg=255
+highlight color1237 ctermbg=237 ctermfg=255
+highlight color1238 ctermbg=238 ctermfg=255
+highlight color1239 ctermbg=239 ctermfg=255
+highlight color1240 ctermbg=240 ctermfg=255
+highlight color1241 ctermbg=241 ctermfg=255
+highlight color1242 ctermbg=242 ctermfg=255
+highlight color1243 ctermbg=243 ctermfg=255
+highlight color1244 ctermbg=244 ctermfg=255
+highlight color1245 ctermbg=245 ctermfg=255
+highlight color1246 ctermbg=246 ctermfg=255
+highlight color1247 ctermbg=247 ctermfg=255
+highlight color1248 ctermbg=248 ctermfg=255
+highlight color1249 ctermbg=249 ctermfg=255
+"highlight color1250 ctermbg=250 ctermfg=255
+"highlight color1251 ctermbg=251 ctermfg=255
+"highlight color1252 ctermbg=252 ctermfg=255
+"highlight color1253 ctermbg=253 ctermfg=255
+"highlight color1254 ctermbg=254 ctermfg=255
+"highlight color1255 ctermbg=255 ctermfg=255
+
 
 "
 " assign a variable containing the list of color names
 "
-"  \'color16',
-"  \'color17',
-"  \'color232',
-"  \'color233',
-"  \'color234',
-"  \'color235',
-"
 let s:colors = [
+  \'color1',
+  \'color2',
+  \'color3',
+  \'color4',
+  \'color5',
+  \'color6',
+  \'color7',
+  \'color8',
+  \'color9',
+  \'color10',
+  \'color11',
+  \'color12',
+  \'color13',
+  \'color14',
+  \'color15',
   \'color18',
   \'color19',
   \'color20',
