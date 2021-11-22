@@ -298,7 +298,7 @@ highlight color1007  ctermbg=7  ctermfg=255
 highlight color1008  ctermbg=8  ctermfg=255
 highlight color1009  ctermbg=9  ctermfg=255
 highlight color1010  ctermbg=10  ctermfg=255
-highlight color1011  ctermbg=11  ctermfg=255
+"highlight color1011  ctermbg=11  ctermfg=255
 highlight color1012  ctermbg=12  ctermfg=255
 highlight color1013  ctermbg=13  ctermfg=255
 "highlight color1014  ctermbg=14  ctermfg=255
@@ -340,7 +340,7 @@ highlight color1045  ctermbg=45  ctermfg=255
 "highlight color1050  ctermbg=50  ctermfg=255
 "highlight color1051  ctermbg=51  ctermfg=255
 highlight color1052  ctermbg=52  ctermfg=255
-highlight color1053  ctermbg=53  ctermfg=255
+"highlight color1053  ctermbg=53  ctermfg=255
 highlight color1054  ctermbg=54  ctermfg=255
 highlight color1055  ctermbg=55  ctermfg=255
 highlight color1056  ctermbg=56  ctermfg=255
@@ -472,13 +472,13 @@ highlight color1181 ctermbg=181 ctermfg=255
 highlight color1182 ctermbg=182 ctermfg=255
 highlight color1183 ctermbg=183 ctermfg=255
 highlight color1184 ctermbg=184 ctermfg=255
-highlight color1185 ctermbg=185 ctermfg=255
-highlight color1186 ctermbg=186 ctermfg=255
-highlight color1187 ctermbg=187 ctermfg=255
-highlight color1188 ctermbg=188 ctermfg=255
-highlight color1189 ctermbg=189 ctermfg=255
-highlight color1190 ctermbg=190 ctermfg=255
-highlight color1191 ctermbg=191 ctermfg=255
+"highlight color1185 ctermbg=185 ctermfg=255
+"highlight color1186 ctermbg=186 ctermfg=255
+"highlight color1187 ctermbg=187 ctermfg=255
+"highlight color1188 ctermbg=188 ctermfg=255
+"highlight color1189 ctermbg=189 ctermfg=255
+"highlight color1190 ctermbg=190 ctermfg=255
+"highlight color1191 ctermbg=191 ctermfg=255
 "highlight color1192 ctermbg=192 ctermfg=255
 "highlight color1193 ctermbg=193 ctermfg=255
 "highlight color1194 ctermbg=194 ctermfg=255
@@ -511,8 +511,8 @@ highlight color1220 ctermbg=220 ctermfg=255
 highlight color1221 ctermbg=221 ctermfg=255
 highlight color1222 ctermbg=222 ctermfg=255
 highlight color1223 ctermbg=223 ctermfg=255
-highlight color1224 ctermbg=224 ctermfg=255
-highlight color1225 ctermbg=225 ctermfg=255
+"highlight color1224 ctermbg=224 ctermfg=255
+"highlight color1225 ctermbg=225 ctermfg=255
 "highlight color1226 ctermbg=226 ctermfg=255
 "highlight color1227 ctermbg=227 ctermfg=255
 "highlight color1228 ctermbg=228 ctermfg=255
@@ -548,7 +548,7 @@ highlight color1249 ctermbg=249 ctermfg=255
 "
 " assign a variable containing the list of color names
 "
-let s:colors = [
+let s:colorsBlackBackround = [
   \'color1',
   \'color2',
   \'color3',
@@ -838,6 +838,220 @@ let s:colors = [
   \'color254',
   \'color255',
 \]
+
+let s:colorsWhiteBackround = [
+  \'color1001',
+  \'color1002',
+  \'color1003',
+  \'color1004',
+  \'color1005',
+  \'color1006',
+  \'color1007',
+  \'color1008',
+  \'color1009',
+  \'color1010',
+  \
+  \'color1012',
+  \'color1013',
+  \
+  \'color1016',
+  \'color1017',
+  \'color1018',
+  \'color1019',
+  \'color1020',
+  \'color1021',
+  \'color1022',
+  \'color1023',
+  \'color1024',
+  \'color1025',
+  \'color1026',
+  \'color1027',
+  \'color1028',
+  \'color1029',
+  \'color1030',
+  \'color1031',
+  \'color1032',
+  \'color1033',
+  \'color1034',
+  \'color1035',
+  \'color1036',
+  \'color1037',
+  \'color1038',
+  \'color1039',
+  \'color1040',
+  \'color1041',
+  \'color1042',
+  \'color1043',
+  \'color1044',
+  \'color1045',
+  \
+  \'color1052',
+  \
+  \'color1054',
+  \'color1055',
+  \'color1056',
+  \'color1057',
+  \'color1058',
+  \'color1059',
+  \'color1060',
+  \'color1061',
+  \'color1062',
+  \'color1063',
+  \'color1064',
+  \'color1065',
+  \'color1066',
+  \'color1067',
+  \'color1068',
+  \'color1069',
+  \'color1070',
+  \'color1071',
+  \'color1072',
+  \'color1073',
+  \'color1074',
+  \'color1075',
+  \'color1076',
+  \'color1077',
+  \'color1078',
+  \'color1079',
+  \'color1080',
+  \'color1081',
+  \
+  \'color1088',
+  \'color1089',
+  \'color1090',
+  \'color1091',
+  \'color1092',
+  \'color1093',
+  \'color1094',
+  \'color1095',
+  \'color1096',
+  \'color1097',
+  \'color1098',
+  \'color1099',
+  \'color1100',
+  \'color1101',
+  \'color1102',
+  \'color1103',
+  \'color1104',
+  \'color1105',
+  \'color1106',
+  \'color1107',
+  \'color1108',
+  \'color1109',
+  \'color1110',
+  \'color1111',
+  \'color1112',
+  \'color1113',
+  \'color1114',
+  \'color1115',
+  \'color1116',
+  \'color1117',
+  \
+  \'color1124',
+  \'color1125',
+  \'color1126',
+  \'color1127',
+  \'color1128',
+  \'color1129',
+  \'color1130',
+  \'color1131',
+  \'color1132',
+  \'color1133',
+  \'color1134',
+  \'color1135',
+  \'color1136',
+  \'color1137',
+  \'color1138',
+  \'color1139',
+  \'color1140',
+  \'color1141',
+  \'color1142',
+  \'color1143',
+  \'color1144',
+  \'color1145',
+  \'color1146',
+  \'color1147',
+  \'color1148',
+  \'color1149',
+  \'color1150',
+  \'color1151',
+  \'color1152',
+  \'color1153',
+  \
+  \'color1160',
+  \'color1161',
+  \'color1162',
+  \'color1163',
+  \'color1164',
+  \'color1165',
+  \'color1166',
+  \'color1167',
+  \'color1168',
+  \'color1169',
+  \'color1170',
+  \'color1171',
+  \'color1172',
+  \'color1173',
+  \'color1174',
+  \'color1175',
+  \'color1176',
+  \'color1177',
+  \'color1178',
+  \'color1179',
+  \'color1180',
+  \'color1181',
+  \'color1182',
+  \'color1183',
+  \'color1184',
+  \
+  \'color1198',
+  \'color1199',
+  \'color1200',
+  \'color1201',
+  \'color1202',
+  \'color1203',
+  \'color1204',
+  \'color1205',
+  \'color1206',
+  \'color1207',
+  \'color1208',
+  \'color1209',
+  \'color1210',
+  \'color1211',
+  \'color1212',
+  \'color1213',
+  \'color1214',
+  \'color1215',
+  \'color1216',
+  \'color1217',
+  \'color1218',
+  \'color1219',
+  \'color1220',
+  \'color1221',
+  \'color1222',
+  \'color1223',
+  \
+  \'color1232',
+  \'color1233',
+  \'color1234',
+  \'color1235',
+  \'color1236',
+  \'color1237',
+  \'color1238',
+  \'color1239',
+  \'color1240',
+  \'color1241',
+  \'color1242',
+  \'color1243',
+  \'color1244',
+  \'color1245',
+  \'color1246',
+  \'color1247',
+  \'color1248',
+  \'color1249',
+\]
+
+let s:colors = s:colorsBlackBackround + s:colorsWhiteBackround 
 
 
 let s:labelColorDictionary = {}
