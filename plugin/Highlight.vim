@@ -1146,7 +1146,7 @@ endfunction
 
 function s:randomColor()
   " return a random color name
-  return s:colors[rand() % len(s:colors)]
+  return s:colors[s:rand() % len(s:colors)]
 endfunction
 
 
