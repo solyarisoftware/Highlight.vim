@@ -1124,7 +1124,7 @@ function s:validateColor(color)
   endif
 endfunction
 
-:
+"
 " Absolute path of script file with symbolic links resolved:
 " let s:path = resolve(expand('<sfile>:p'))
 "     execute "edit +1 " . s:path . "colors_table.txt"
@@ -1135,6 +1135,14 @@ function s:highlightColors()
   filter /color/ highlight 
 endfunction
 
+"
+" rand() Vim native function is available from Vim version: > 8.1.2342 
+" using s:rand() allow to use this plugin with older versions of Vim
+" see https://vi.stackexchange.com/a/3833/983
+" 
+function s:rand() abort
+  return str2nr(matchstr(reltimestr(reltime()), '\v\.@<=\d+')[1:])
+endfunction
 
 function s:randomColor()
   " return a random color name
