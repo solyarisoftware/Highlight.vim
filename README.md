@@ -17,10 +17,13 @@ Sometime you need to highlight words, sentences or any character spans in your t
 with a nice background color, with the goal of point out keywords, labels, tags, important sections, etc.
 
 I personally have this need: 
+
 - When analyzing a text, with the aim to select linguistics entities (verbs, nouns, special keywords), 
   with the help of a nice visual overview of different kind of contents
+
 - When annotating intents and entities in "conversational AI" / chatbot tools, 
   like [RASA](www.rasa.com) and similar
+
 - When programming in a standard programming language (NodeJs, Python) 
   just to put in evidence function names, variables, etc.
 
@@ -30,12 +33,14 @@ This project is related to the original (open) points raised from my vi stackexc
 
 - [Vim editor entities tagging/annotation tool](https://vi.stackexchange.com/questions/34821/vim-editor-entities-tagging-annotation-tool) 
 - [How to replace selected text T with some function(T), using a keyboard shortcut?](https://vi.stackexchange.com/questions/34823/how-to-replace-selected-text-t-with-some-functiont-using-a-keyboard-shortcut/34824#34824) 
+
 The final goal is to create a plugin to annotate "conversational AI" / NLP attributes 
 (intents, entities, etc.) within the vim editor! Stay tuned!
 
-**Background colors?**
+ **Background colors?**
 
 What I mean with *highlight* is to colorize the background of a text span.
+
 This plugin currently uses a subset of cterm/xterm 256 colors, suitable for terminal mode.
 
     highlight color31  ctermbg=31  ctermfg=0
@@ -44,9 +49,10 @@ I decide to use black (ctermfg=0) as fixed foreground color. That's opinabile.
 The reason why of the subset is because some (too dark) colors 
 do not make a suitable contrast with the black foreground color. 
 
-**A pattern-based colorizer?**
+ **A pattern-based colorizer?**
 
-It means that, behind the scenes, the plugin uses `matchadd` vimscript function (`help matchadd`). 
+Behind the scenes the plugin uses `matchadd` vimscript function (`help matchadd`). 
+
 This means that if you highlight a text span instance (say the keyword `temperature_body`), 
 in facts **all occurrences** of the same text are highlighted with the same color, 
 in the current buffer. This is smart and maybe what you are looking for in many cases. 
@@ -83,10 +89,10 @@ Utilities:
 | `:HighlightColors`                 | visualizes all available colors                                       |
 | `:HighlightUndo`                   | undo lasts highlight command                                          |
 | `:HighlightLabelColor label color` | Assign a label (alias) to a color name                                |
-| `:HighlightScript script_file`     | execute all Highlight* commands in specified script fil                |
+| `:HighlightLoadScript script_file` | execute all Highlight commands in specified script file               |
 
 
-### `:HighlightText text [color]` 
+### `:HighlightText text [color]`
 
 Highlight a word or sentence, or any regexp pattern, picking a random background color:
 
@@ -120,6 +126,7 @@ Examples:
 - `HighlightText some_text_without_blanks 70`
 - `HighlightText text\ containing\ blanks color69`
 - `HighlightText text\ containing\ blanks 69`
+- `:HighlightText \[\zs.\{-}\ze\](address) 112`
 
 
 ### `:HighlightVisual [color]` 
@@ -156,62 +163,103 @@ A color name is one of the items:
 in all commands below you can just pass the color also as a number, 
 by example: `color18` could be referred also as `18`
 
+
 ### `:HighlightLabelColor label color` 
 
-Assign a label (alias) name to a color name. That's useful when you want to assign logical classes (labels) 
-to the same color, for a visual "unification", by example:
-
-    :HighlightLabelColor verb color55
-    :HighlightText go verb
-    :HighlightText went verb
-    :HighlightText come verb
-    :HighlightText came verb
-
-### `:HighlightScript script_file` 
-
-Execute all Highlight* commands in specified script file.
-By example you want to highlight a list of keywords at once.
-So you create a script file `my_highlight.script` containing all your Highlight commands as:
+💡Tip:
+in all commands below you can just pass the color also as a number, 
+Assign a label (alias) name to a color name. 
+In that way you could afterward use the custom label instead of a color name or number.
+That's useful when you want to assign logical classes (labels) to the same color, 
+for a visual "unification", by example:
 
 ```
-"
-" my_highlight.script
-"
-HighlightText my_keyword              color43
-HighlightText anoter_keyword          color43
-HighlightText a_third_keyword         color43
-HighlightText a\ sentence             color109
-HighlightText another\ full\ sentence color78
-HighlightText again_another_keyword   color55
-``` 
+:HighlightLabelColor verb color55
+:HighlightText go verb
+:HighlightText went verb
+:HighlightText come verb
+:HighlightText came verb
+```
 
-Afterward you run the script from command mode:
 
-    :HighlightScript my_highlight.script
+### `:HighlightLoadScript script_file` 
+
+Execute all Highlight commands in specified script file.
+By example you want to highlight a list of keywords at once.
+
+1. you create a script file `my_highlight.script` containing all your Highlight commands as:
+
+   ```
+   "
+   " my_highlight.script
+   "
+   HighlightText my_keyword              color43
+   HighlightText anoter_keyword          color43
+   HighlightText a_third_keyword         color43
+   HighlightText a\ sentence             color109
+   HighlightText another\ full\ sentence color78
+   HighlightText again_another_keyword   color55
+   ``` 
+
+2. Afterward you run the script from command mode:
+
+   ```
+  :HighlightLoadScript my_highlight.script
+   ```
 
 
 ## Keyboard shortcuts
-You can use vim key map to assign an Highlight.vim command to a key.
+
+💡Tip: You can use vim key map to assign an Highlight.vim command to a key.
+
 By example, to assign the command `:HighlightText Screenshots` to the key `F2`:
 
-    map <F2> :HighlightText Screenshots<CR>
+```
+map <F2> :HighlightText Screenshots<CR>
+```
 
 Or you want to assign the command `:HighlightYanked 134` to the key `F3`:
 
-    map <F3> :HighlightYanked 134<CR>
+```
+map <F3> :HighlightYanked 134<CR>
+```
+
+Or suppose you want to highlight a text with a casual color
+
+```
+:HighlightText Screenshots<CR>
+```
+
+But you are unhappy with the background color, so you can repeat the last command with:
+
+```
+:map <F3> @:
+
+:HighlightText Screenshots<CR>
+```
+
+For now on, `F3` repeat last command, so highlighting with a new random color!
 
 
-## Screenshots
+## Usage Examples/Screenshots
 
-Some examples [here](screenshots/)
+Many usage examples [here](screenshots/)
 
 
-## Todo
+## To do
 
-- Assign custom labels to color names. 
-  In that way you could afterward use the custom label instead of a color name or number.
-- Make highlights persistent, tracking on file all changes on some readable format (e.g. JSON).
+- Make highlights persistent, saving on file all changes.
+  So far you can load a script of *Higlighlight.vim* commands, 
+  using `:HighlightLoadScript my_highlight.script`. 
+  The specular function (save all  *Higlighlight.vim* commands) must be implemented
 
+##  Changelog
+
+- v.0.9.0 
+  - s:rand() random function implemented locally in vimscript, 
+    allowing retro compatibility with Vim versions <= 8.1 
+  - many usage examples (with screenshots) added
+  - command `:HighlightScript` has renamed `:HighlightLoadScript`
 
 ## Similar projects
 

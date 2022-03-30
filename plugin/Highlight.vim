@@ -20,9 +20,6 @@
 " Usage: 
 " see at the end of this file
 "
-" Vim version:
-"   > 8.1.2342 (because Rand() function)
-"
 
 "
 " define color names
@@ -1150,7 +1147,6 @@ function s:randomColor()
 endfunction
 
 
-
 " list of all matchadd items
 let s:matchaddIds = []
 
@@ -1421,6 +1417,6 @@ command! -nargs=* HighlightSearch call s:highlightSearch(<q-args>)
 
 command! HighlightColors call s:highlightColors()
 command! HighlightUndo call s:highlightUndo()
-command! -nargs=1 HighlightScript silent call s:runScript(<f-args>)
+command! -nargs=1 HighlightLoadScript silent call s:runScript(<f-args>)
 
 command! -nargs=* HighlightLabelColor call s:labelColor(<f-args>)
