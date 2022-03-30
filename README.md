@@ -204,7 +204,7 @@ By example you want to highlight a list of keywords at once.
 2. Afterward you run the script from command mode:
 
    ```
-  :HighlightLoadScript my_highlight.script
+   :HighlightLoadScript my_highlight.script
    ```
 
 
