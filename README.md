@@ -187,24 +187,25 @@ for a visual "unification", by example:
 Execute all Highlight commands in specified script file.
 By example you want to highlight a list of keywords at once.
 
-1. you create a script file `my_highlight.script` containing all your Highlight commands as:
+1. you create a script file `my_highlight_script.vim` containing all your Highlight commands as:
 
    ```
    "
    " my_highlight.script
    "
-   HighlightText my_keyword              color43
-   HighlightText anoter_keyword          color43
-   HighlightText a_third_keyword         color43
-   HighlightText a\ sentence             color109
-   HighlightText another\ full\ sentence color78
-   HighlightText again_another_keyword   color55
+   HighlightText my_keyword                     color43
+   HighlightText anoter_keyword                 43
+   HighlightText a_third_keyword                43
+   HighlightText a\ sentence                    109
+   HighlightText another\ full\ sentence        color78
+   HighlightText again_another_keyword          color55
+   HighlightText \[\zs[^\[\]]\{-}\ze\](address) 1004
    ``` 
 
 2. Afterward you run the script from command mode:
 
    ```
-   :HighlightLoadScript my_highlight.script
+   :HighlightLoadScript my_highlight_script.vim
    ```
 
 
@@ -255,6 +256,11 @@ Many usage examples [here](screenshots/)
 
 ##  Changelog
 
+- v.0.9.1 
+  - `s:highlight` updated. now print a better output 
+  - `:HighlightLoadScript` updated. Now accept file autocompletion
+  - added `[...](...)` regexp examples 
+
 - v.0.9.0 
   - s:rand() random function implemented locally in vimscript, 
     allowing retro compatibility with Vim versions <= 8.1 
@@ -278,6 +284,9 @@ I'm not a vimscript expert, so any contribute is welcome.
 For any proposal and issue, please submit here on github issues for bugs, suggestions, etc.
 You can also contact me via email (giorgio.robino@gmail.com).
 
+
+## Thanks
+- [https://vi.stackexchange.com/users/9333/maxim-kim](https://vi.stackexchange.com/questions/37217/non-greedy-any-charsword-regexp-problem?noredirect=1#comment67803_37217A)
 
 ## Licenze
 

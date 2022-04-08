@@ -1202,7 +1202,7 @@ function s:highlight(color, text)
     " color not specified, select a random color
     let l:randomColor = s:randomColor()
     call s:matchadd(l:randomColor, a:text)
-    echo 'used random color: ' . l:randomColor
+    echo "highligted text '" . a:text . "' using color: " . l:randomColor
 
   else  
     " color argument specified
@@ -1210,9 +1210,12 @@ function s:highlight(color, text)
 
     if !empty(l:color)
       call s:matchadd(l:color, a:text)
+      echo 'highligted text: ' . a:text . ' using color: ' . l:color
     endif
 
   endif  
+
+
 endfunction
 
 
@@ -1387,22 +1390,35 @@ function s:highlightSearch(...)
 endfunction
 
 
-" load list of (Highlight) commands from a file and execute (run) these
-function s:runScript(filename)
+function s:runScript(...)
+  " load list of commands from a file and execute (run) these
 
-  if !filereadable(a:filename)
-    echo "script file not found: " . a:filename
+  if a:0 == 0
+      echo 'error: <script_filename> argument must be specified'
+      return
+  endif
+
+  if a:0 > 1
+      echo 'error: too many arguments'
+      return
+  endif 
+
+  let filename = a:1
+
+  if !filereadable(filename)
+    echo 'error: not found script file: ' . filename
     return
   endif
 
-  for line in readfile(a:filename)
+  for line in readfile(filename)
+    " silent! execute line
     execute line
   endfor  
 
-  "echo "executed script file: " . a:filename
+ echo ''
+ echo 'executed script file: ' . filename
 
 endfunction  
-
 
 "
 " USER DEFINED COMMANDS
@@ -1417,6 +1433,8 @@ command! -nargs=* HighlightSearch call s:highlightSearch(<q-args>)
 
 command! HighlightColors call s:highlightColors()
 command! HighlightUndo call s:highlightUndo()
-command! -nargs=1 HighlightLoadScript silent call s:runScript(<f-args>)
+
+"command! -nargs=1 HighlightLoadScript silent call s:runScript(<f-args>)
+command! -nargs=* -complete=file HighlightLoadScript call s:runScript(<f-args>)
 
 command! -nargs=* HighlightLabelColor call s:labelColor(<f-args>)

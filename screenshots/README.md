@@ -70,14 +70,14 @@ And you want to colorize corresponding value with the same color:
 
 ```
 :HighlightText (\zsgender\ze) 217
-:HighlightText \[\zs.\{-}\ze\](gender) 217
+:HighlightText \[\zs[^\[\]]\{-}\ze\](gender) 217
 ```
 
 So you want to colorize entity `address` with a different color:
 
 ```
 :HighlightText (\zsaddress\ze) 112
-:HighlightText \[\zs.\{-}\ze\](address) 112
+:HighlightText \[\zs[^\[\]]\{-}\ze\](address) 112
 ```
 
 ![](screenshot-8.png)
