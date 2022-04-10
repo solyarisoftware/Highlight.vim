@@ -4,12 +4,14 @@
 
 ![](screenshots/screenshot-4.png)
 
-Highlight.vim plugin is a pattern-based text background colorizer, 
+Highlight.vim plugin is a pattern-based text background highlighter, 
 that highlights span of texts (words, sentences, paragraphs),
-using a background color, random picked or specified by user.
+also specified via regular expressions,
+using a background color (random picked or specified by user).
 
 A set of user commands (in command mode) are supplied to select text 
 in a bunch of different ways, from direct set, visual selection, etc.
+
 
 **What's the point?**
 
@@ -21,11 +23,12 @@ I personally have this need:
 - When analyzing a text, with the aim to select linguistics entities (verbs, nouns, special keywords), 
   with the help of a nice visual overview of different kind of contents
 
-- When annotating intents and entities in "conversational AI" / chatbot tools, 
-  like [RASA](www.rasa.com) and similar
+- When annotating intents sentences and named entities in "conversational AI" / chatbot tools, 
+  like [RASA](www.rasa.com) et al
 
 - When programming in a standard programming language (NodeJs, Python) 
   just to put in evidence function names, variables, etc.
+
 
 **What's the original goal?**
 
@@ -34,20 +37,25 @@ This project is related to the original (open) points raised from my vi stackexc
 - [Vim editor entities tagging/annotation tool](https://vi.stackexchange.com/questions/34821/vim-editor-entities-tagging-annotation-tool) 
 - [How to replace selected text T with some function(T), using a keyboard shortcut?](https://vi.stackexchange.com/questions/34823/how-to-replace-selected-text-t-with-some-functiont-using-a-keyboard-shortcut/34824#34824) 
 
-The final goal is to create a plugin to annotate "conversational AI" / NLP attributes 
-(intents, entities, etc.) within the vim editor! Stay tuned!
+> The final goal is to create a plugin to annotate NLP attributes 
+> (intents, entities, etc.) within the vim editor.
+>
+> The plugin is by example complementary to companion [nera.vim](https://www.github.com/solyarisoftware/nira.vim),
+> that I shared to annotate entities in RASA named entities syntax format. 
+
 
  **Background colors?**
 
-What I mean with *highlight* is to colorize the background of a text span.
+What I mean with *highlight* is to colorize the background of some text.
 
 This plugin currently uses a subset of cterm/xterm 256 colors, suitable for terminal mode.
 
     highlight color31  ctermbg=31  ctermfg=0
 
-I decide to use black (ctermfg=0) as fixed foreground color. That's opinabile.
-The reason why of the subset is because some (too dark) colors 
-do not make a suitable contrast with the black foreground color. 
+> I decide to use black (ctermfg=0) as fixed foreground color. That's opinabile.
+> The reason why of the subset is because some (too dark) colors 
+> do not make a suitable contrast with the black foreground color. 
+
 
  **A pattern-based colorizer?**
 
@@ -120,13 +128,16 @@ if the text contains spaces, you need to escape them (` ` must be written `\ `),
 by example `some\ text\ to\ be\ colorized`
 
 Examples:
-- `HighlightText a text span made by many words`
-- `HighlightText /\vmin|max`
-- `HighlightText some_text_without_blanks color70`
-- `HighlightText some_text_without_blanks 70`
-- `HighlightText text\ containing\ blanks color69`
-- `HighlightText text\ containing\ blanks 69`
-- `:HighlightText \[\zs.\{-}\ze\](address) 112`
+| command                                          | note                                                     |
+| ---                                              | ---                                                      |
+| `HighlightText a text span made by many words`   | highlights a specific span of words                      |
+| `HighlightText some_text_without_blanks color70` | highlight a word, using a specific color name            |
+| `HighlightText some_text_without_blanks 70`      | highlight a word, using a specific color number          |
+| `HighlightText text\ containing\ blanks color69` | highlight a phrase (with spaces), using a specific color |
+| `HighlightText text\ containing\ blanks 69`      | highlight a phrase (with spaces), using a specific color |
+| `HighlightText /\vmin|max`                       | highlights a text defined by a regular expression        |
+| `HighlightText (\zsgender\ze) 217                | highlights a text defined by a regular expression        |
+| `HighlightText \[\zs[^\[\]]\{-}\ze\](gender) 217 | highlights a text defined by a regular expression        |
 
 
 ### `:HighlightVisual [color]` 
@@ -191,7 +202,7 @@ By example you want to highlight a list of keywords at once.
 
    ```
    "
-   " my_highlight.script
+   " my_highlight_script.vim
    "
    HighlightText my_keyword                     color43
    HighlightText anoter_keyword                 43
@@ -249,16 +260,22 @@ Many usage examples [here](screenshots/)
 
 ## To do
 
+- add arguments autocompletion in all user commands, 
+  storing *color* and *label* arguments 
+  in dedicated autocompletion lists, for succesive usage. 
+  Normalize colors to a unique syntax (e.g. 127 -> color127) ?
+
 - Make highlights persistent, saving on file all changes.
   So far you can load a script of *Higlighlight.vim* commands, 
   using `:HighlightLoadScript my_highlight.script`. 
   The specular function (save all  *Higlighlight.vim* commands) must be implemented
 
+
 ##  Changelog
 
 - v.0.9.1 
-  - `s:highlight` updated. now print a better output 
-  - `:HighlightLoadScript` updated. Now accept file autocompletion
+  - `s:highlight` updated. Now print a better output 
+  - `:HighlightLoadScript` updated. Now has file argument autocompletion
   - added `[...](...)` regexp examples 
 
 - v.0.9.0 
@@ -267,10 +284,12 @@ Many usage examples [here](screenshots/)
   - many usage examples (with screenshots) added
   - command `:HighlightScript` has renamed `:HighlightLoadScript`
 
-## Similar projects
+
+## Similar/Related projects
 
 - https://github.com/lfv89/vim-interestingwords
 - https://github.com/joanrivera/vim-highlight
+- https://www.github.com/solyarisoftware/nira.vim
 
 
 ## Status / How to contribute
@@ -288,7 +307,7 @@ You can also contact me via email (giorgio.robino@gmail.com).
 ## Thanks
 - [https://vi.stackexchange.com/users/9333/maxim-kim](https://vi.stackexchange.com/questions/37217/non-greedy-any-charsword-regexp-problem?noredirect=1#comment67803_37217A)
 
-## Licenze
+## License
 
 MIT (c) Giorgio Robino
 
