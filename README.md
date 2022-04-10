@@ -153,12 +153,14 @@ Selecting a specific background color:
     :HighlightVisual color
 
 💡Tip: 
-you can just pass the `color` as a number, `HighlightVisualWithColor 123`
+you can just pass the `color` as a number, `HighlightVisual 123`
 
 Examples:
-- `HighlightVisual`
-- `HighlightVisual 71`
-- `HighlightVisual color71`
+| command                                           | description                                              |
+| ---                                               | ---                                                      |
+| `:HighlightVisual`                                | highlights visual selection, with a random color         |
+| `:HighlightVisual 71`                             | highlights visual selection, with a specific color number|
+| `:HighlightVisual color71`                        | highlights visual selection, with a specific color name  |
 
 
 ### `:HighlightColors` 
