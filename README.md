@@ -135,7 +135,7 @@ Examples:
 | `HighlightText some_text_without_blanks 70`      | highlight a word, using a specific color number          |
 | `HighlightText text\ containing\ blanks color69` | highlight a phrase (with spaces), using a specific color |
 | `HighlightText text\ containing\ blanks 69`      | highlight a phrase (with spaces), using a specific color |
-| `HighlightText /\vmin|max`                       | highlights a text defined by a regular expression        |
+| `HighlightText /\vmin\|max`                       | highlights a text defined by a regular expression        |
 | `HighlightText (\zsgender\ze) 217                | highlights a text defined by a regular expression        |
 | `HighlightText \[\zs[^\[\]]\{-}\ze\](gender) 217 | highlights a text defined by a regular expression        |
 
