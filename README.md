@@ -128,16 +128,16 @@ if the text contains spaces, you need to escape them (` ` must be written `\ `),
 by example `some\ text\ to\ be\ colorized`
 
 Examples:
-| command                                          | note                                                     |
-| ---                                              | ---                                                      |
-| `HighlightText a text span made by many words`   | highlights a specific span of words                      |
-| `HighlightText some_text_without_blanks color70` | highlight a word, using a specific color name            |
-| `HighlightText some_text_without_blanks 70`      | highlight a word, using a specific color number          |
-| `HighlightText text\ containing\ blanks color69` | highlight a phrase (with spaces), using a specific color |
-| `HighlightText text\ containing\ blanks 69`      | highlight a phrase (with spaces), using a specific color |
-| `HighlightText /\vmin\|max`                      | highlights a text defined by a regular expression        |
-| `HighlightText (\zsgender\ze) 217`               | highlights a text defined by a regular expression        |
-| `HighlightText \[\zs[^\[\]]\{-}\ze\](gender) 217`| highlights a text defined by a regular expression        |
+| command                                           | description                                              |
+| ---                                               | ---                                                      |
+| `:HighlightText a text span made by many words`   | highlights a specific span of words                      |
+| `:HighlightText some_text_without_blanks color70` | highlight a word, using a specific color name            |
+| `:HighlightText some_text_without_blanks 70`      | highlight a word, using a specific color number          |
+| `:HighlightText text\ containing\ blanks color69` | highlight a phrase (with spaces), using a specific color |
+| `:HighlightText text\ containing\ blanks 69`      | highlight a phrase (with spaces), using a specific color |
+| `:HighlightText /\vmin\|max`                      | highlights a text defined by a regular expression        |
+| `:HighlightText (\zsgender\ze) 217`               | highlights a text defined by a regular expression        |
+| `:HighlightText \[\zs[^\[\]]\{-}\ze\](gender) 217`| highlights a text defined by a regular expression        |
 
 
 ### `:HighlightVisual [color]` 
