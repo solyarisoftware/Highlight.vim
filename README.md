@@ -40,7 +40,7 @@ This project is related to the original (open) points raised from my vi stackexc
 > The final goal is to create a plugin to annotate NLP attributes 
 > (intents, entities, etc.) within the vim editor.
 >
-> The plugin is by example complementary to companion [nera.vim](https://www.github.com/solyarisoftware/nira.vim),
+> The plugin is by example complementary to companion [nera.vim](https://www.github.com/solyarisoftware/nera.vim),
 > that I shared to annotate entities in RASA named entities syntax format. 
 
 
@@ -291,7 +291,7 @@ Many usage examples [here](screenshots/)
 
 - https://github.com/lfv89/vim-interestingwords
 - https://github.com/joanrivera/vim-highlight
-- https://www.github.com/solyarisoftware/nira.vim
+- https://www.github.com/solyarisoftware/nera.vim
 
 
 ## Status / How to contribute
