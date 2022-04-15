@@ -543,6 +543,12 @@ highlight color1249 ctermbg=249 ctermfg=255
 
 
 "
+" assign a variable containing the last set color name/number
+"
+let s:lastUsedColor = v:null 
+
+
+"
 " assign a variable containing the list of color names
 "
 let s:colorsBlackBackround = [
@@ -1094,11 +1100,16 @@ endfunction
 
 
 function s:validateColor(color)
+  " return a valid color name, or nothing
+
+  " check if color is predefined value `.`
+  if a:color == '.'
+    return s:lastUsedColor
+  endif
+
   "
   " if color argument is a number (e.g. 123)
   " then the color become 'color123'
-  "
-  " return a valid color name, or nothing
   "
   if a:color =~ '\v<\d+>'
     " color is specified as a number
@@ -1196,13 +1207,14 @@ endfunction
 
 
 function s:highlight(color, text)
-  "i highlight the text of, with a specified color or a random color
+  " highlight the text with a specified color or a random color
   
   if empty(a:color) 
     " color not specified, select a random color
     let l:randomColor = s:randomColor()
     call s:matchadd(l:randomColor, a:text)
-    echo "highligted text '" . a:text . "' using color: " . l:randomColor
+    let s:lastUsedColor = l:randomColor
+    echo "highlighted text '" . a:text . "' using color: " . l:randomColor
 
   else  
     " color argument specified
@@ -1210,7 +1222,8 @@ function s:highlight(color, text)
 
     if !empty(l:color)
       call s:matchadd(l:color, a:text)
-      echo 'highligted text: ' . a:text . ' using color: ' . l:color
+    let s:lastUsedColor = l:color
+      echo 'highlighted text: ' . a:text . ' using color: ' . l:color
     endif
 
   endif  

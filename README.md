@@ -138,6 +138,7 @@ Examples:
 | `:HighlightText /\vmin\|max`                      | highlights a text defined by a regular expression        |
 | `:HighlightText (\zsgender\ze) 217`               | highlights a text defined by a regular expression        |
 | `:HighlightText \[\zs[^\[\]]\{-}\ze\](gender) 217`| highlights a text defined by a regular expression        |
+| `:HighlightText Giorgio .`                        | highlights text *Giorgio*, using last used color (217)     |
 
 
 ### `:HighlightVisual [color]` 
@@ -161,6 +162,7 @@ Examples:
 | `:HighlightVisual`                                | highlights visual selection, with a random color         |
 | `:HighlightVisual 71`                             | highlights visual selection, with a specific color number|
 | `:HighlightVisual color71`                        | highlights visual selection, with a specific color name  |
+| `:HighlightVisual .`                              | highlights visual selection, using last used color (71)  |
 
 
 ### `:HighlightColors` 
@@ -211,7 +213,7 @@ By example you want to highlight a list of keywords at once.
    HighlightText a_third_keyword                43
    HighlightText a\ sentence                    109
    HighlightText another\ full\ sentence        color78
-   HighlightText again_another_keyword          color55
+   HighlightText a_text_using_last_used_color   .
    HighlightText \[\zs[^\[\]]\{-}\ze\](address) 1004
    ``` 
 
@@ -274,6 +276,10 @@ Many usage examples [here](screenshots/)
 
 
 ##  Changelog
+
+- v.0.10.0 
+  - color can be also equal to reserved value `.`, 
+    meaning the last used (set in previous command) color 
 
 - v.0.9.1 
   - `s:highlight` updated. Now print a better output 
