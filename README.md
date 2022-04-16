@@ -208,13 +208,14 @@ By example you want to highlight a list of keywords at once.
    "
    " my_highlight_script.vim
    "
-   HighlightText my_keyword                     color43
-   HighlightText anoter_keyword                 43
-   HighlightText a_third_keyword                43
-   HighlightText a\ sentence                    109
-   HighlightText another\ full\ sentence        color78
-   HighlightText a_text_using_last_used_color   .
+   HighlightText my_keyword color43
+   HighlightText anoter_keyword  43
+   HighlightText a_third_keyword 43
+   HighlightText a\ sentence 109
+   HighlightText another\ full\ sentence color78
+   HighlightText a_text_using_last_used_color .
    HighlightText \[\zs[^\[\]]\{-}\ze\](address) 1004
+   HighlightText (\zsaddress\ze) . 
    ``` 
 
 2. Afterward you run the script from command mode:
@@ -262,37 +263,6 @@ For now on, `F3` repeat last command, so highlighting with a new random color!
 Many usage examples [here](screenshots/)
 
 
-## To do
-
-- add arguments autocompletion in all user commands, 
-  storing *color* and *label* arguments 
-  in dedicated autocompletion lists, for succesive usage. 
-  Normalize colors to a unique syntax (e.g. 127 -> color127) ?
-
-- Make highlights persistent, saving on file all changes.
-  So far you can load a script of *Higlighlight.vim* commands, 
-  using `:HighlightLoadScript my_highlight.script`. 
-  The specular function (save all  *Higlighlight.vim* commands) must be implemented
-
-
-##  Changelog
-
-- v.0.10.0 
-  - color can be also equal to reserved value `.`, 
-    meaning the last used (set in previous command) color 
-
-- v.0.9.1 
-  - `s:highlight` updated. Now print a better output 
-  - `:HighlightLoadScript` updated. Now has file argument autocompletion
-  - added `[...](...)` regexp examples 
-
-- v.0.9.0 
-  - s:rand() random function implemented locally in vimscript, 
-    allowing retro compatibility with Vim versions <= 8.1 
-  - many usage examples (with screenshots) added
-  - command `:HighlightScript` has renamed `:HighlightLoadScript`
-
-
 ## Similar/Related projects
 
 - https://github.com/lfv89/vim-interestingwords
@@ -314,10 +284,6 @@ You can also contact me via email (giorgio.robino@gmail.com).
 
 ## Thanks
 - [https://vi.stackexchange.com/users/9333/maxim-kim](https://vi.stackexchange.com/questions/37217/non-greedy-any-charsword-regexp-problem?noredirect=1#comment67803_37217A)
-
-## License
-
-MIT (c) Giorgio Robino
 
 
 [top](#)

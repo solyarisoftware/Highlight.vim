@@ -4,7 +4,7 @@
 " Vim global plugin for highlight text spans with random color background
 "
 " Last Change:  
-" 2021 Oct 2021
+" 2022 Apr 2022
 "
 " Maintainer:   
 " Giorgio Robino <giorgio.robino@gmail.com>
@@ -545,7 +545,7 @@ highlight color1249 ctermbg=249 ctermfg=255
 "
 " assign a variable containing the last set color name/number
 "
-let s:lastUsedColor = v:null 
+let s:usedColors = [] 
 
 
 "
@@ -1104,7 +1104,12 @@ function s:validateColor(color)
 
   " check if color is predefined value `.`
   if a:color == '.'
-    return s:lastUsedColor
+    let indexLastItem = len(s:usedColors) - 1
+    if indexLastItem > -1
+      return s:usedColors[indexLastItem]
+    else
+      echo 'error: no color set in a previous command'
+    endif  
   endif
 
   "
@@ -1213,8 +1218,16 @@ function s:highlight(color, text)
     " color not specified, select a random color
     let l:randomColor = s:randomColor()
     call s:matchadd(l:randomColor, a:text)
-    let s:lastUsedColor = l:randomColor
-    echo "highlighted text '" . a:text . "' using color: " . l:randomColor
+
+    " append the color in the used colors list, 
+    " removing the color if already in the list 
+    let itemTobeRemoved = index(s:usedColors, l:randomColor)
+    if itemTobeRemoved >= 0
+      call remove(s:usedColors, itemTobeRemoved)
+    endif
+    call add(s:usedColors, l:randomColor)
+    
+    echo "highlighted text '" . a:text . "' with color: " . l:randomColor
 
   else  
     " color argument specified
@@ -1222,13 +1235,18 @@ function s:highlight(color, text)
 
     if !empty(l:color)
       call s:matchadd(l:color, a:text)
-    let s:lastUsedColor = l:color
-      echo 'highlighted text: ' . a:text . ' using color: ' . l:color
+      
+      " append the color in the used colors list, 
+      " removing the color if already in the list 
+      let itemTobeRemoved = index(s:usedColors, l:color)
+      if itemTobeRemoved >= 0
+        call remove(s:usedColors, itemTobeRemoved)
+      endif
+      call add(s:usedColors, l:color)
+      
+      echo 'highlighted text: ' . a:text . ' with color: ' . l:color
     endif
-
   endif  
-
-
 endfunction
 
 
@@ -1433,16 +1451,123 @@ function s:runScript(...)
 
 endfunction  
 
+
+function! s:autoCompletionHighlightText(arg, line, pos)
+  " set autocompletion list just for second argument (color) with used colors 
+  
+  " https://dev.to/pbnj/how-to-get-make-target-tab-completion-in-vim-4mj1#solution
+  " https://stackoverflow.com/a/6941053/1786393
+  let l = split(a:line[:a:pos-1], '\%(\%(\%(^\|[^\\]\)\\\)\@<!\s\)\+', 1)
+  let n = len(l) - index(l, 'HighlightText') - 1
+
+  if n == 2
+    " second argument = color
+    let completionList = s:usedColors
+  endif
+
+  return filter(copy(l:completionList), 'v:val =~ "^' . a:arg . '"')
+
+endfunction
+
+
+function! s:autoCompletionHighlightVisual(arg, line, pos)
+  " set autocompletion list just for the first argument (color) with used colors 
+  
+  " https://dev.to/pbnj/how-to-get-make-target-tab-completion-in-vim-4mj1#solution
+  " https://stackoverflow.com/a/6941053/1786393
+  let l = split(a:line[:a:pos-1], '\%(\%(\%(^\|[^\\]\)\\\)\@<!\s\)\+', 1)
+  let n = len(l) - index(l, 'HighlightVisual') - 1
+
+  if n == 1
+    " first argument = color
+    let completionList = s:usedColors
+  endif
+
+  return filter(copy(l:completionList), 'v:val =~ "^' . a:arg . '"')
+
+endfunction
+
+
+function! s:autoCompletionHighlightLine(arg, line, pos)
+  " set autocompletion list just for the first argument (color) with used colors 
+  
+  " https://dev.to/pbnj/how-to-get-make-target-tab-completion-in-vim-4mj1#solution
+  " https://stackoverflow.com/a/6941053/1786393
+  let l = split(a:line[:a:pos-1], '\%(\%(\%(^\|[^\\]\)\\\)\@<!\s\)\+', 1)
+  let n = len(l) - index(l, 'HighlightLine') - 1
+
+  if n == 1
+    " first argument = color
+    let completionList = s:usedColors
+  endif
+
+  return filter(copy(l:completionList), 'v:val =~ "^' . a:arg . '"')
+
+endfunction
+
+
+function! s:autoCompletionHighlightCursor(arg, line, pos)
+  " set autocompletion list just for the first argument (color) with used colors 
+  
+  " https://dev.to/pbnj/how-to-get-make-target-tab-completion-in-vim-4mj1#solution
+  " https://stackoverflow.com/a/6941053/1786393
+  let l = split(a:line[:a:pos-1], '\%(\%(\%(^\|[^\\]\)\\\)\@<!\s\)\+', 1)
+  let n = len(l) - index(l, 'HighlightCursor') - 1
+
+  if n == 1
+    " first argument = color
+    let completionList = s:usedColors
+  endif
+
+  return filter(copy(l:completionList), 'v:val =~ "^' . a:arg . '"')
+
+endfunction
+
+
+function! s:autoCompletionHighlightYanked(arg, line, pos)
+  " set autocompletion list just for the first argument (color) with used colors 
+  
+  " https://dev.to/pbnj/how-to-get-make-target-tab-completion-in-vim-4mj1#solution
+  " https://stackoverflow.com/a/6941053/1786393
+  let l = split(a:line[:a:pos-1], '\%(\%(\%(^\|[^\\]\)\\\)\@<!\s\)\+', 1)
+  let n = len(l) - index(l, 'HighlightYanked') - 1
+
+  if n == 1
+    " first argument = color
+    let completionList = s:usedColors
+  endif
+
+  return filter(copy(l:completionList), 'v:val =~ "^' . a:arg . '"')
+
+endfunction
+
+
+function! s:autoCompletionHighlightSearch(arg, line, pos)
+  " set autocompletion list just for the first argument (color) with used colors 
+  
+  " https://dev.to/pbnj/how-to-get-make-target-tab-completion-in-vim-4mj1#solution
+  " https://stackoverflow.com/a/6941053/1786393
+  let l = split(a:line[:a:pos-1], '\%(\%(\%(^\|[^\\]\)\\\)\@<!\s\)\+', 1)
+  let n = len(l) - index(l, 'HighlightSearch') - 1
+
+  if n == 1
+    " first argument = color
+    let completionList = s:usedColors
+  endif
+
+  return filter(copy(l:completionList), 'v:val =~ "^' . a:arg . '"')
+
+endfunction
+
 "
 " USER DEFINED COMMANDS
 "
-command! -nargs=* HighlightText call s:highlightText(<f-args>)
-
-command! -nargs=* HighlightVisual call s:highlightVisual(<q-args>)
-command! -nargs=* HighlightLine call s:highlightCurrentLine(<q-args>)
-command! -nargs=* HighlightCursor call s:highlightWordUnderCursor(<q-args>)
-command! -nargs=* HighlightYanked call s:highlightYanked(<q-args>)
-command! -nargs=* HighlightSearch call s:highlightSearch(<q-args>)
+command! -nargs=* -complete=customlist,s:autoCompletionHighlightText HighlightText call s:highlightText(<f-args>)
+command! -nargs=* -complete=customlist,s:autoCompletionHighlightVisual HighlightVisual call s:highlightVisual(<q-args>)
+command! -nargs=* -complete=customlist,s:autoCompletionHighlightLine HighlightLine call s:highlightCurrentLine(<q-args>)
+command! -nargs=* -complete=customlist,s:autoCompletionHighlightCursor HighlightCursor call s:highlightWordUnderCursor(<q-args>)
+command! -nargs=* -complete=customlist,s:autoCompletionHighlightYanked HighlightYanked call s:highlightYanked(<q-args>)
+command! -nargs=* -complete=customlist,s:autoCompletionHighlightSearch HighlightSearch call s:highlightSearch(<q-args>)
 
 command! HighlightColors call s:highlightColors()
 command! HighlightUndo call s:highlightUndo()
